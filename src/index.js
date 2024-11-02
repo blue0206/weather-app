@@ -108,3 +108,37 @@ function setUnits(data, metric=false) {
 
     return data;
 }
+
+const FormControl = function() {
+    const location = document.querySelector("#location");
+    const date1 = document.querySelector("#date-one");
+    const date2 = document.querySelector("#date-two");
+    const submitBtn = document.querySelector(".generate-weather-data");
+    
+    submitBtn.addEventListener('click', async (event) => {
+        if (location.value != "") {
+            event.preventDefault();
+
+            let url = createURL(location.value, date1.value, date2.value);
+            console.log(url.imperialURL, url.metricURL);
+
+            const imperialData = await getData(url.imperialURL);
+            const metricData = await getData(url.metricURL);
+
+            console.log("IMPERIAL DATA", imperialData);
+            console.log("METRIC DATA", metricData);
+
+            const retrievedImperialData = reportData(imperialData);
+            console.log("IMPERIAL DATA", retrievedImperialData);
+
+            const retrievedMetricData = reportData(metricData);
+            console.log("METRIC DATA", retrievedMetricData);
+            console.log("TEST", retrievedImperialData);
+
+            const finalImperialData = setUnits(retrievedImperialData);
+            const finalMetricData = setUnits(retrievedMetricData, true);
+            console.log("FINAL IMPERIAL DATA", finalImperialData);
+            console.log("FINAL METRIC DATA", finalMetricData);
+        }
+    });
+}();
