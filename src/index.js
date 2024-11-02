@@ -34,3 +34,33 @@ async function getData(url) {
         console.log(error);
     }
 }
+
+function reportData(data) {
+    const retrievedData = {
+        location: data.resolvedAddress,
+        description: data.description,
+        days: [],
+    };
+
+    data.days.forEach((day) => {
+        retrievedData.days.push({
+            date: day.datetime,
+            tempmax: day.tempmax,
+            tempmin: day.tempmin,
+            temp: day.temp,
+            feelslike: day.feelslike,
+            precipitation: day.precip,
+            snow: day.snow,
+            wind: day.windspeed,
+            visibility: day.visibility,
+            sunrise: day.sunrise,
+            sunset: day.sunset,
+            conditions: day.conditions,
+            description: day.description
+        });
+    });
+
+    console.table(retrievedData);
+    console.log(retrievedData);
+    return retrievedData;
+}
