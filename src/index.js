@@ -64,3 +64,47 @@ function reportData(data) {
     console.log(retrievedData);
     return retrievedData;
 }
+
+function setUnits(data, metric=false) {
+    if (metric) {
+        const metricUnits = {
+            temp: "°C",
+            precipitation: "mm",
+            snow: "cm",
+            wind: "kmph",
+            visibility: "km"
+        };
+
+        data.days.forEach((day) => {
+            day.tempmax += metricUnits.temp;
+            day.tempmin += metricUnits.temp;
+            day.temp += metricUnits.temp;
+            day.feelslike += metricUnits.temp;
+            day.precipitation += metricUnits.precipitation;
+            day.snow += metricUnits.snow;
+            day.wind += metricUnits.wind;
+            day.visibility += metricUnits.visibility;
+        });
+    } else {
+        const imperialUnits = {
+            temp: "°F",
+            precipitation: "in",
+            snow: "in",
+            wind: "mph",
+            visibility: "mi"
+        }
+
+        data.days.forEach((day) => {
+            day.tempmax += imperialUnits.temp;
+            day.tempmin += imperialUnits.temp;
+            day.temp += imperialUnits.temp;
+            day.feelslike += imperialUnits.temp;
+            day.precipitation += imperialUnits.precipitation;
+            day.snow += imperialUnits.snow;
+            day.wind += imperialUnits.wind;
+            day.visibility += imperialUnits.visibility;
+        });
+    }
+
+    return data;
+}
