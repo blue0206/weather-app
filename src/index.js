@@ -1,29 +1,23 @@
 
-function createURL(location, date1, date2) {
-    console.log(date1, date2);
+function createURL(location, date) {
+    console.log(date);
     const apiKey = "FQNNDH99DKU5EPWAR5GGXRSN6";
-    let baseURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
-    let imperialURL = "";
-    let metricURL = "";
+    let unit = "";
+    const metricUnitParameter = "unitGroup=metric&";
+    let url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/${date}2024-11-03/2024-11-05?${unit}key=${apiKey}&iconSet=icons2&elements=datetime,tempmax,tempmin,temp,feelslike,precip,humidity,dew,pressure,snow,windspeed,windgust,visibility,uvindex,sunrise,sunset,moonphase,moonrise,moonset,conditions,description,icon`
     
-    // If date-1 not specified by user.
-    if (!date1) {
-        date1 = date2;
+    if (date) {
+        date += "/";
     }
-    // If date-2 is specified by user.
-    if (date2) {
-        imperialURL = `${baseURL}${location}/${date1}/${date2}?key=${apiKey}`;
-        metricURL = `${baseURL}${location}/${date1}/${date2}?unitGroup=metric&key=${apiKey}`;
-    } else {
-        // If only date-1 specified by user.
-        imperialURL = `${baseURL}${location}/${date1}?key=${apiKey}`;
-        metricURL = `${baseURL}${location}/${date1}?unitGroup=metric&key=${apiKey}`;
-    }
+
+    let imperialURL = url;
+    unit = metricUnitParameter;
+    let metricURL = url;
 
     return {
         imperialURL,
         metricURL
-    }
+    };
 }
 
 async function getData(url) {
@@ -33,36 +27,6 @@ async function getData(url) {
     } catch(error) {
         console.log(error);
     }
-}
-
-function reportData(data) {
-    const retrievedData = {
-        location: data.resolvedAddress,
-        description: data.description,
-        days: [],
-    };
-
-    data.days.forEach((day) => {
-        retrievedData.days.push({
-            date: day.datetime,
-            tempmax: day.tempmax,
-            tempmin: day.tempmin,
-            temp: day.temp,
-            feelslike: day.feelslike,
-            precipitation: day.precip,
-            snow: day.snow,
-            wind: day.windspeed,
-            visibility: day.visibility,
-            sunrise: day.sunrise,
-            sunset: day.sunset,
-            conditions: day.conditions,
-            description: day.description
-        });
-    });
-
-    console.table(retrievedData);
-    console.log(retrievedData);
-    return retrievedData;
 }
 
 function setUnits(data, metric=false) {
@@ -128,15 +92,8 @@ const FormControl = function() {
             console.log("IMPERIAL DATA", imperialData);
             console.log("METRIC DATA", metricData);
 
-            const retrievedImperialData = reportData(imperialData);
-            console.log("IMPERIAL DATA", retrievedImperialData);
-
-            const retrievedMetricData = reportData(metricData);
-            console.log("METRIC DATA", retrievedMetricData);
-            console.log("TEST", retrievedImperialData);
-
-            const finalImperialData = setUnits(retrievedImperialData);
-            const finalMetricData = setUnits(retrievedMetricData, true);
+            const finalImperialData = setUnits(imperialData);
+            const finalMetricData = setUnits(metricData, true);
             console.log("FINAL IMPERIAL DATA", finalImperialData);
             console.log("FINAL METRIC DATA", finalMetricData);
         }
