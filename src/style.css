@@ -33,8 +33,91 @@ body {
     font-size: 1.2rem;
 
     display: grid;
-    grid-template-rows: auto 1fr 125px;
+    grid-template: auto 1fr 125px / 1fr;
 
     min-height: 98vh;
     min-height: 100dvh;
+}
+
+/* Main Styling */
+main {
+    display: grid;
+    grid-template-rows: 150px 1fr;
+
+    padding-inline: min(18vw, 400px);
+}
+
+.header {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    place-content: center;
+    gap: 4px;
+}
+
+.header > .head-hi-low {
+    display: flex;
+    gap: 11px;
+}
+
+.data-tiles {
+    display: grid;
+    grid-template: repeat(4, 1fr) / 2fr repeat(4, 1fr);
+    grid-template-areas: 
+                        'hours hours hours hours hours'
+                        'forecast feels-like wind wind visibility'
+                        'forecast uv-index precipitation humidity pressure'
+                        'forecast sunrise sunset moon moon';
+    gap: 16px;
+}
+
+.hours {
+    grid-area: hours;
+}
+
+.days {
+    grid-area: forecast;
+}
+
+.feels-like {
+    grid-area: feels-like;
+}
+
+.wind {
+    grid-area: wind;
+}
+
+.visibility {
+    grid-area: visibility;
+}
+
+.uv-index {
+    grid-area: uv-index;
+}
+
+.precipitation {
+    grid-area: precipitation;
+}
+
+.humidity {
+    grid-area: humidity;
+}
+
+.pressure {
+    grid-area: pressure;
+}
+
+.sunrise {
+    grid-area: sunrise;
+}
+
+.sunset {
+    grid-area: sunset;
+}
+
+.moon {
+    grid-area: moon;
+}
+
+.data-tiles > * {
+    border: 1px solid black;
 }
