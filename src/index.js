@@ -1,14 +1,9 @@
 
-function createURL(location, date) {
-    console.log(date);
+function createURL(location) {
     const apiKey = "FQNNDH99DKU5EPWAR5GGXRSN6";
     let unit = "";
     const metricUnitParameter = "unitGroup=metric&";
-    let url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/${date}2024-11-03/2024-11-05?${unit}key=${apiKey}&iconSet=icons2&elements=datetime,tempmax,tempmin,temp,feelslike,precip,humidity,dew,pressure,snow,windspeed,windgust,visibility,uvindex,sunrise,sunset,moonphase,moonrise,moonset,conditions,description,icon`
-    
-    if (date) {
-        date += "/";
-    }
+    let url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?${unit}key=${apiKey}&iconSet=icons2&elements=datetime,tempmax,tempmin,temp,feelslike,precip,humidity,dew,pressure,snow,windspeed,windgust,visibility,uvindex,sunrise,sunset,moonphase,moonrise,moonset,conditions,description,icon`;
 
     let imperialURL = url;
     unit = metricUnitParameter;
@@ -48,15 +43,13 @@ async function getData(url) {
 
 const FormControl = function() {
     const location = document.querySelector("#location");
-    const date1 = document.querySelector("#date-one");
-    const date2 = document.querySelector("#date-two");
-    const submitBtn = document.querySelector(".generate-weather-data");
+    const submitBtn = document.querySelector("#location-search");
     
     submitBtn.addEventListener('click', async (event) => {
         if (location.value != "") {
             event.preventDefault();
 
-            let url = createURL(location.value, date1.value, date2.value);
+            let url = createURL(location.value);
             console.log(url.imperialURL, url.metricURL);
 
             const imperialData = await getData(url.imperialURL);
