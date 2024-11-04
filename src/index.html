@@ -7,35 +7,8 @@
 </head>
 <body>
     <form>
-        <div class="form-element">
-            <label for="location">Location</label>
-            <input type="text" name="location" id="location" required />
-        </div>
-        <div class="form-element">
-            <label for="date-one">On/From</label>
-            <input type="date" name="date-one" id="date-one">
-        </div>
-        <div class="form-element">
-            <label for="date-two">To</label>
-            <input type="date" name="date-two" id="date-two">
-        </div>
-        <div class="form-element">
-            <div class="notes">
-                <ol>
-                    <div class="note-heading">NOTE:</div>
-                    <li>Not filling "On/From" and "To" dates will show data of next 15 days.</li>
-                    <li>Not filling "To" date will show data of only the "On/From" date specified.</li>
-                    <li>
-                        If the "On/From" date is not specified but the "To" date is specified, then
-                        the "To" date will be interpreted as "On/From" date and the data for only that
-                        date will be specified.
-                    </li>
-                </ol>
-            </div>
-        </div>
-        <div class="form-element">
-            <button type="submit" class="generate-weather-data">Generate Data</button>
-        </div>
+        <input type="text" id="location" required />
+        <button type="submit" id="location-search"></button>
     </form>
 </body>
 </html>
