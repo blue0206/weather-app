@@ -27,3 +27,14 @@ p, h1, h2, h3, h4, h5, h6 {
 #root, #__next {
     isolation: isolate;
 }
+
+/* Top Level*/
+body {
+    font-size: 1.2rem;
+
+    display: grid;
+    grid-template-rows: auto 1fr 125px;
+
+    min-height: 98vh;
+    min-height: 100dvh;
+}
