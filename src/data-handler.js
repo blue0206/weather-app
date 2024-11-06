@@ -1,12 +1,9 @@
 function createURL(location) {
     const apiKey = "FQNNDH99DKU5EPWAR5GGXRSN6";
-    let unit = "";
-    const metricUnitParameter = "unitGroup=metric&";
-    let url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?${unit}key=${apiKey}&iconSet=icons2&elements=datetime,tempmax,tempmin,temp,feelslike,precip,humidity,dew,pressure,snow,windspeed,windgust,visibility,uvindex,sunrise,sunset,moonphase,moonrise,moonset,conditions,description,icon`;
+    const imperialURL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${apiKey}&iconSet=icons2&elements=datetime,tempmax,tempmin,temp,feelslike,precip,humidity,dew,pressure,snow,windspeed,windgust,visibility,uvindex,sunrise,sunset,moonphase,moonrise,moonset,conditions,description,icon`;
+    const metricURL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&key=${apiKey}&iconSet=icons2&elements=datetime,tempmax,tempmin,temp,feelslike,precip,humidity,dew,pressure,snow,windspeed,windgust,visibility,uvindex,sunrise,sunset,moonphase,moonrise,moonset,conditions,description,icon`;
 
-    let imperialURL = url;
-    unit = metricUnitParameter;
-    let metricURL = url;
+    console.log("URL START", imperialURL, metricURL, "URL END");
 
     return {
         imperialURL,
