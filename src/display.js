@@ -1,3 +1,5 @@
+import { timeFormat } from "./time-manipulation";
+
 function populateDisplay(data) {
     // Update display for hourly weather data.
     hourlyForecastDisplay(data);
@@ -23,6 +25,68 @@ function hourlyForecastDisplay(data) {
     heading.textContent = "HOURLY FORECAST";
     headingContainer.appendChild(heading);
     container.appendChild(headingContainer);
+
+    // Actual hourly data to be displayed in display section.
+    const dataList = document.createElement('div');
+    dataList.className = "hourly-data-container";
+
+    // Generate forecast data for each hour starting from current one.
+    const currentHourObj = timeFormat(data.currentConditions.datetime);
+    generateHourlyForecastDisplay(data, dataList, currentHourObj, 0, 0);
+
+    container.appendChild(dataList);
+    parentElement.appendChild(container);
+}
+
+function generateHourlyForecastDisplay(data, dataList, currentHourObj, currentDay, forecastCounter) {
+    let day = currentDay;
+    for (let i=0; i<24; i++) {
+        if (forecastCounter > 24) {
+            break;
+        }
+        const hour = data.days[day].hours[i];
+        const hourObj = timeFormat(hour.datetime);
+        if (day == 0 && hourObj.hours < currentHourObj.hours) {
+            continue;
+        }
+
+        const container = document.createElement('div');
+        container.className = "hour-data";
+        
+        const time = document.createElement('div');
+        time.className = "hour-time";
+        const hourTime = document.createElement('div');
+        const suffix = document.createElement('div');
+
+        if (currentHourObj.hours == hourObj.hours && day == 0) {
+            hourTime.textContent = "Now";
+            suffix.textContent = "";
+        } else {
+            hourTime.textContent = hourObj.hours12F;
+            suffix.textContent = hourObj.isAM ? "AM" : "PM";
+        }
+        time.appendChild(hourTime);
+        time.appendChild(suffix);
+        container.appendChild(time);
+
+        const conditionIcon = new Image();
+        conditionIcon.classList.add("hour-icon");
+        conditionIcon.classList.add(hour.icon);
+        container.appendChild(conditionIcon);
+
+        const temp = document.createElement('div');
+        temp.className = "hour-temp";
+        temp.textContent = hour.temp + "°";
+        container.appendChild(temp);
+
+        dataList.appendChild(container);
+        forecastCounter++;
+        console.log(forecastCounter);
+    }
+
+    if (forecastCounter < 24) {
+        generateHourlyForecastDisplay(data, dataList, currentHourObj, ++day, forecastCounter);
+    }
 }
 
 export { populateDisplay };
