@@ -13,11 +13,11 @@ const SectionHeader = function() {
         const locationArr = data.resolvedAddress.split(",");
         const location = `${locationArr[0]}, ${locationArr[2]}`;
         // Current Temperature
-        const temp = data.currentConditions.temp;
+        const temp = Math.round(data.currentConditions.temp);
         // Maximum Temperature
-        const hi = data.days[0].tempmax;
+        const hi = Math.round(data.days[0].tempmax);
         // Minimum Temperature
-        const low = data.days[0].tempmin;
+        const low = Math.round(data.days[0].tempmin);
 
         document.querySelector(".location").textContent = location;
         document.querySelector(".head-temp").textContent = `${temp}°`;
@@ -101,7 +101,7 @@ const SectionHours = function() {
     
             const temp = document.createElement('div');
             temp.className = "hour-temp";
-            temp.textContent = hour.temp + "°";
+            temp.textContent = Math.round(hour.temp) + "°";
             container.appendChild(temp);
     
             dataList.appendChild(container);
