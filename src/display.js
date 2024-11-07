@@ -1,9 +1,33 @@
 import { timeFormat } from "./time-manipulation";
 
 function populateDisplay(data) {
+    // Update the header display.
+    SectionHeader.generate(data);
     // Update display for hourly weather data.
     SectionHours.generate(data);
 };
+
+const SectionHeader = function() {
+    function generate(data) {
+        // Location
+        const locationArr = data.resolvedAddress.split(",");
+        const location = `${locationArr[0]}, ${locationArr[2]}`;
+        // Current Temperature
+        const temp = data.currentConditions.temp;
+        // Maximum Temperature
+        const hi = data.days[0].tempmax;
+        // Minimum Temperature
+        const low = data.days[0].tempmin;
+
+        document.querySelector(".location").textContent = location;
+        document.querySelector(".head-temp").textContent = `${temp}°`;
+        const extremes = document.querySelector(".head-hi-low");
+        extremes.querySelector("div").textContent = `H:${hi}°`;
+        extremes.lastChild.textContent = `L:${low}°`;
+    }
+
+    return { generate };
+}();
 
 const SectionHours = function() {
 
@@ -92,6 +116,5 @@ const SectionHours = function() {
     return { generate };
 
 }();
-
 
 export { populateDisplay };
