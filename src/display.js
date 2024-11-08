@@ -246,7 +246,7 @@ const SectionWind = function() {
     return { generate };
 }();
 
-function generateSectionHeading(title) {
+function generateSectionHeading(title, source) {
     const headingContainer = document.createElement('div');
     headingContainer.className = "data-heading";
     const icon = new Image();
