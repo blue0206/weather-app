@@ -310,6 +310,14 @@ const SectionVisibility = function() {
 
         // Heading of the visibility section (Icon + Heading)
         container.appendChild(generateSectionHeading("VISIBILITY"));
+
+        // Visibility data.
+        const visibility = document.createElement('div');
+        let unit = data.units == "metric" ? "km" : "mi";
+        visibility.textContent = `${data.currentConditions.visibility} ${unit}`;
+        container.appendChild(visibility);
+
+        parentElement.appendChild(container);
     }
 
     return { generate };
