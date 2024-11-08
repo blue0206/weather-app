@@ -338,6 +338,28 @@ const SectionUVIndex = function() {
 
         // Heading of the uv-index section (Icon + Heading)
         container.appendChild(generateSectionHeading("UV INDEX"));
+
+        // UV-Index Data Container
+        const uvIndexContainer = document.createElement('div');
+        uvIndexContainer.className = "uv-index-data-container";
+        // UV-Index Value
+        const value = document.createElement('div');
+        value.textContent = data.currentConditions.uvindex;
+        uvIndexContainer.appendChild(value);
+        // UV-Index Remarks
+        const remarks = document.createElement('div');
+        if (value <= 2) {
+            remarks.textContent = "Low";
+        } else if (value > 2 && value <= 5) {
+            remarks.textContent = "Moderate";
+        } else if (value > 5 && value <= 8) {
+            remarks.textContent = "High";
+        } else {
+            remarks.textContent = "Severe";
+        }
+        uvIndexContainer.appendChild(remarks);
+        // UV-Index Gradient
+        
     }
 
     return { generate };
