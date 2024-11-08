@@ -45,15 +45,7 @@ const SectionHours = function() {
         const container = document.createElement('div');
     
         // Heading of the hourly weather data section (Icon + Heading)
-        const headingContainer = document.createElement('div');
-        headingContainer.className = "data-heading";
-        const icon = new Image();
-        icon.src = "";
-        headingContainer.appendChild(icon);
-        const heading = document.createElement('div');
-        heading.textContent = "HOURLY FORECAST";
-        headingContainer.appendChild(heading);
-        container.appendChild(headingContainer);
+        container.appendChild(generateSectionHeading("HOURLY FORECAST"));
     
         // Actual hourly data to be displayed in display section.
         const dataList = document.createElement('div');
@@ -133,15 +125,7 @@ const SectionDays = function() {
         const container = document.createElement('div');
 
         // Heading of the daily weather forecast section (Icon + Heading)
-        const headingContainer = document.createElement('div');
-        headingContainer.className = "data-heading";
-        const icon = new Image();
-        icon.src = "";
-        headingContainer.appendChild(icon);
-        const heading = document.createElement('div');
-        heading.textContent = "15-DAY FORECAST";
-        headingContainer.appendChild(heading);
-        container.appendChild(headingContainer);
+        container.appendChild(generateSectionHeading("15-DAY FORECAST"));
 
         // Actual daily data to be displayed in display section.
         const dataList = document.createElement('div');
@@ -194,7 +178,6 @@ const SectionDays = function() {
             tempGradient.className = "temp-gradient";
             const gradientCSS = LinearGradient.generateGradient(Math.round(day.tempmax), Math.round(day.tempmin), data.units);
             tempGradient.style.cssText = `${gradientCSS.background1} ${gradientCSS.background2}`;
-            console.log(`${gradientCSS.background1} ${gradientCSS.background2}`);
 
             tempContainer.appendChild(tempGradient);
             tempContainer.appendChild(temp);
@@ -206,8 +189,20 @@ const SectionDays = function() {
         parentElement.appendChild(container);
     }
 
-    return {generate}; 
+    return { generate }; 
 
 }();
+
+function generateSectionHeading(title) {
+    const headingContainer = document.createElement('div');
+    headingContainer.className = "data-heading";
+    const icon = new Image();
+    icon.src = "";
+    headingContainer.appendChild(icon);
+    const heading = document.createElement('div');
+    heading.textContent = title;
+    headingContainer.appendChild(heading);
+    return headingContainer;
+}
 
 export { populateDisplay };
