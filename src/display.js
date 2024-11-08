@@ -14,8 +14,7 @@ function populateDisplay(data) {
 const SectionHeader = function() {
     function generate(data) {
         // Location
-        const locationArr = data.resolvedAddress.split(",");
-        const location = `${locationArr[0]}, ${locationArr[2]}`;
+        const location = data.resolvedAddress;
         // Current Temperature
         const temp = Math.round(data.currentConditions.temp);
         // Maximum Temperature
