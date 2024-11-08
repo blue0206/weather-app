@@ -9,6 +9,8 @@ function populateDisplay(data) {
     SectionHours.generate(data);
     // Update display for daily forecast data.
     SectionDays.generate(data);
+    // Update display for feels-like temp.
+    SectionFeelsLikeTemp.generate(data);
 };
 
 const SectionHeader = function() {
@@ -191,6 +193,32 @@ const SectionDays = function() {
 
     return { generate }; 
 
+}();
+
+const SectionFeelsLikeTemp = function() {
+    function generate(data) {
+        const parentElement = document.querySelector(".feels-like");
+        // Clear any existing child nodes of the node to be populated.
+        if (parentElement.lastChild) {
+            parentElement.removeChild(parentElement.lastChild);
+        }
+
+        // Container node to hold the data and append to parent.
+        const container = document.createElement('div');
+
+        // Heading of the feels-like temperature section (Icon + Heading)
+        container.appendChild(generateSectionHeading("FEELS LIKE"));
+
+        // Temperature
+        const temp = document.createElement('div');
+        temp.className = "temp-feels-like";
+        temp.textContent = `${Math.round(data.currentConditions.feelslike)}°`;
+        container.appendChild(temp);
+
+        parentElement.appendChild(container);
+    };
+
+    return { generate };
 }();
 
 function generateSectionHeading(title) {
