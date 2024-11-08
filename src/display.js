@@ -13,6 +13,8 @@ function populateDisplay(data) {
     SectionFeelsLikeTemp.generate(data);
     // Update display for wind data.
     SectionWind.generate(data);
+    // Update display for visibility data.
+    SectionVisibility.generate(data);
 };
 
 const SectionHeader = function() {
@@ -291,6 +293,24 @@ const SectionWind = function() {
 
         return container;
     };
+
+    return { generate };
+}();
+
+const SectionVisibility = function() {
+    function generate(data) {
+        const parentElement = document.querySelector(".visibility");
+        // Clear any existing child nodes of the node to be populated.
+        if (parentElement.lastChild) {
+          parentElement.removeChild(parentElement.lastChild);
+        }
+
+        // Container node to hold the data and append to parent.
+        const container = document.createElement("div");
+
+        // Heading of the visibility section (Icon + Heading)
+        container.appendChild(generateSectionHeading("VISIBILITY"));
+    }
 
     return { generate };
 }();
