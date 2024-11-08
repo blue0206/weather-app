@@ -11,6 +11,8 @@ function populateDisplay(data) {
     SectionDays.generate(data);
     // Update display for feels-like temp.
     SectionFeelsLikeTemp.generate(data);
+    // Update display for wind data.
+    SectionWind.generate(data);
 };
 
 const SectionHeader = function() {
@@ -222,6 +224,24 @@ const SectionFeelsLikeTemp = function() {
 
         parentElement.appendChild(container);
     };
+
+    return { generate };
+}();
+
+const SectionWind = function() {
+    function generate(data) {
+        const parentElement = document.querySelector(".feels-like");
+        // Clear any existing child nodes of the node to be populated.
+        if (parentElement.lastChild) {
+            parentElement.removeChild(parentElement.lastChild);
+        }
+
+        // Container node to hold the data and append to parent.
+        const container = document.createElement('div');
+
+        // Heading of the wind section (Icon + Heading)
+        container.appendChild(generateSectionHeading("WIND"));
+    }
 
     return { generate };
 }();
