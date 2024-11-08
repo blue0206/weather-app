@@ -134,6 +134,11 @@ const SectionDays = function() {
         dataList.className = "daily-data-container";
 
         data.days.forEach((day) => {
+            // Generate a horizontal line before each tab.
+            const hLine = document.createElement('div');
+            hLine.className = "h-line";
+            dataList.appendChild(hLine);
+            
             const container = document.createElement('div');
             container.className = "day-data";
 
