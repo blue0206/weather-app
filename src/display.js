@@ -241,6 +241,55 @@ const SectionWind = function() {
 
         // Heading of the wind section (Icon + Heading)
         container.appendChild(generateSectionHeading("WIND"));
+
+        // Wind Data
+        const windContainer = document.createElement('div');
+        windContainer.className = "wind-data-container";
+        // Wind Speed
+        windContainer.appendChild(
+            generateWindData(
+                data.currentConditions.windspeed, 
+                data.units, 
+                "wind-speed", 
+                "Wind"
+            )
+        );
+        // Horizontal Line
+        const hLine = document.createElement('div');
+        hLine.className = "h-line";
+        windContainer.appendChild(hLine);
+        // Wind Gust
+        windContainer.appendChild(
+            generateWindData(
+                data.days[0].windgust, 
+                data.units, 
+                "wind-gust", 
+                "Gusts"
+            )
+        );
+
+        container.appendChild(windContainer);
+        parentElement.appendChild(container);
+    }
+
+    function generateWindData(dataValue, dataUnit, containerClassName, typeValue) {
+        const container = document.createElement('div');
+        container.className = containerClassName;
+
+        const value = document.createElement('div');
+        value.textContent = Math.round(dataValue);
+        container.appendChild(value);
+
+        const secondaryValueContainer = document.createElement('div');
+        const unit = document.createElement('div');
+        unit.textContent = dataUnit == "metric" ? "KPH" : "MPH";
+        secondaryValueContainer.appendChild(unit);
+        const type = document.createElement('div');
+        type.textContent = typeValue;
+        secondaryValueContainer.appendChild(type);
+        container.appendChild(secondaryValueContainer);
+
+        return container;
     }
 
     return { generate };
