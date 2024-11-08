@@ -1,10 +1,14 @@
-import { timeFormat } from "./time-manipulation";
+import { format } from "date-fns";
+import { timeFormat } from "./utility";
+import { LinearGradient } from "./utility";
 
 function populateDisplay(data) {
     // Update the header display.
     SectionHeader.generate(data);
     // Update display for hourly weather data.
     SectionHours.generate(data);
+    // Update display for daily forecast data.
+    SectionDays.generate(data);
 };
 
 const SectionHeader = function() {
@@ -114,6 +118,96 @@ const SectionHours = function() {
     }
 
     return { generate };
+
+}();
+
+const SectionDays = function() {
+
+    function generate(data) {
+        const parentElement = document.querySelector(".days");
+        // Clear any existing child nodes of the node to be populated.
+        if (parentElement.lastChild) {
+            parentElement.removeChild(parentElement.lastChild);
+        }
+
+        // Container node to hold the data and append to parent.
+        const container = document.createElement('div');
+
+        // Heading of the daily weather forecast section (Icon + Heading)
+        const headingContainer = document.createElement('div');
+        headingContainer.className = "data-heading";
+        const icon = new Image();
+        icon.src = "";
+        headingContainer.appendChild(icon);
+        const heading = document.createElement('div');
+        heading.textContent = "15-DAY FORECAST";
+        headingContainer.appendChild(heading);
+        container.appendChild(headingContainer);
+
+        // Actual daily data to be displayed in display section.
+        const dataList = document.createElement('div');
+        dataList.className = "daily-data-container";
+
+        data.days.forEach((day) => {
+            const container = document.createElement('div');
+            container.className = "day-data";
+
+            // The day of the week.
+            const dayOfWeek = document.createElement('div');
+            dayOfWeek.className = '.day';
+            if (day === data.days[0]) {
+                dayOfWeek.textContent = "Today";
+            } else {
+                dayOfWeek.textContent = format(day.datetime, "E");
+            }
+            container.appendChild(dayOfWeek);
+
+            // Weather icon for the day.
+            const icon = new Image();
+            icon.classList.add("day-icon");
+            icon.classList.add(day.icon);
+            container.appendChild(icon);
+
+            // Temperatures for the day.
+            const tempContainer = document.createElement('div');
+            tempContainer.className = "temp-container";
+
+            const temp = document.createElement('div');
+            temp.className = "day-temp";
+            // Max temperature for the day.
+            const hi = document.createElement('div');
+            hi.className = "day-hi";
+            hi.textContent = `${Math.round(day.tempmax)}°`;
+            temp.appendChild(hi);
+            // Average temperature for the day.
+            const avg = document.createElement('div');
+            avg.className = "day-avg";
+            avg.textContent = `${Math.round(day.temp)}°`;
+            temp.appendChild(avg);
+            // Min temperature for the day.
+            const low = document.createElement('div');
+            low.className = "day-low";
+            low.textContent = `${Math.round(day.tempmin)}°`;
+            temp.appendChild(low);
+            
+            // Temperature Gradient
+            const tempGradient = document.createElement('div');
+            tempGradient.className = "temp-gradient";
+            const gradientCSS = LinearGradient.generateGradient(Math.round(day.tempmax), Math.round(day.tempmin), data.units);
+            tempGradient.style.cssText = `${gradientCSS.background1} ${gradientCSS.background2}`;
+            console.log(`${gradientCSS.background1} ${gradientCSS.background2}`);
+
+            tempContainer.appendChild(tempGradient);
+            tempContainer.appendChild(temp);
+            container.appendChild(tempContainer);
+
+            dataList.appendChild(container);
+        });
+        container.appendChild(dataList);
+        parentElement.appendChild(container);
+    }
+
+    return {generate}; 
 
 }();
 
