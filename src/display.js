@@ -230,7 +230,7 @@ const SectionFeelsLikeTemp = function() {
 
 const SectionWind = function() {
     function generate(data) {
-        const parentElement = document.querySelector(".feels-like");
+        const parentElement = document.querySelector(".wind");
         // Clear any existing child nodes of the node to be populated.
         if (parentElement.lastChild) {
             parentElement.removeChild(parentElement.lastChild);
@@ -270,7 +270,7 @@ const SectionWind = function() {
 
         container.appendChild(windContainer);
         parentElement.appendChild(container);
-    }
+    };
 
     function generateWindData(dataValue, dataUnit, containerClassName, typeValue) {
         const container = document.createElement('div');
@@ -290,7 +290,7 @@ const SectionWind = function() {
         container.appendChild(secondaryValueContainer);
 
         return container;
-    }
+    };
 
     return { generate };
 }();
