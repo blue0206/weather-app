@@ -189,7 +189,7 @@ const SectionDays = function() {
             // Temperature Gradient
             const tempGradient = document.createElement('div');
             tempGradient.className = "temp-gradient";
-            const gradientCSS = LinearGradient.generateGradient(Math.round(day.tempmax), Math.round(day.tempmin), data.units);
+            const gradientCSS = LinearGradient.generateDayForecastGradient(Math.round(day.tempmax), Math.round(day.tempmin), data.units);
             tempGradient.style.cssText = `${gradientCSS.background1} ${gradientCSS.background2}`;
 
             tempContainer.appendChild(tempGradient);
@@ -348,18 +348,26 @@ const SectionUVIndex = function() {
         uvIndexContainer.appendChild(value);
         // UV-Index Remarks
         const remarks = document.createElement('div');
-        if (value <= 2) {
+        if (value.textContent <= 2) {
             remarks.textContent = "Low";
-        } else if (value > 2 && value <= 5) {
+        } else if (value.textContent > 2 && value.textContent <= 5) {
             remarks.textContent = "Moderate";
-        } else if (value > 5 && value <= 8) {
+        } else if (value.textContent > 5 && value.textContent <= 8) {
             remarks.textContent = "High";
         } else {
             remarks.textContent = "Severe";
         }
         uvIndexContainer.appendChild(remarks);
         // UV-Index Gradient
-        
+        const gradient = document.createElement('div');
+        gradient.className = "uv-gradient";
+        gradient.appendChild(marker);
+        const gradientCSS = LinearGradient.generateUVIndexGradient();
+        gradient.style.cssText = `${gradientCSS.background1} ${gradientCSS.background2}`;
+        uvIndexContainer.appendChild(gradient);
+
+        container.appendChild(uvIndexContainer);
+        parentElement.appendChild(container);
     }
 
     return { generate };
