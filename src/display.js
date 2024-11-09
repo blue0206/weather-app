@@ -566,6 +566,52 @@ const SectionMoon = function() {
         }
         container.appendChild(generateSectionHeading(heading));
 
+        // Moon data.
+        // Moonrise
+        const moonrise = document.createElement('div');
+        const moonriseTitle = document.createElement('div');
+        moonriseTitle.className = "moonrise";
+        moonriseTitle.textContent = "Moonrise";
+        moonrise.appendChild(moonriseTitle);
+        const moonriseTime = document.createElement('div');
+        if (data.days[0].moonrise) {
+            const timeObj = timeFormat(data.days[0].moonrise);
+            const time = document.createElement('div');
+            time.textContent = `${timeObj.hours12F}:${timeObj.minutes}`;
+            moonriseTime.appendChild(time);
+            const meridiem = document.createElement('div');
+            meridiem.textContent = timeObj.isAM ? "AM" : "PM";
+            moonriseTime.appendChild(meridiem);
+        } else {
+            moonriseTime.textContent = "-";
+        }
+        moonrise.appendChild(moonriseTime);
+        container.appendChild(moonrise);
+        // Horizontal line.
+        const hLine = document.createElement('div');
+        hLine.className = "h-line";
+        container.appendChild(moonrise);
+        // Moonset
+        const moonset = document.createElement('div');
+        const moonsetTitle = document.createElement('div');
+        moonsetTitle.className = "moonset";
+        moonsetTitle.textContent = "Moonset";
+        moonset.appendChild(moonsetTitle);
+        const moonsetTime = document.createElement('div');
+        if (data.days[0].moonset) {
+            const timeObj = timeFormat(data.days[0].moonset);
+            const time = document.createElement('div');
+            time.textContent = `${timeObj.hours12F}:${timeObj.minutes}`;
+            moonsetTime.appendChild(time);
+            const meridiem = document.createElement('div');
+            meridiem.textContent = timeObj.isAM ? "AM" : "PM";
+            moonsetTime.appendChild(meridiem);
+        } else {
+            moonsetTime.textContent = "-";
+        }
+        moonset.appendChild(moonsetTime);
+        container.appendChild(moonset);
+
         parentElement.appendChild(container);
     }
 
