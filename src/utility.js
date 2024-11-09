@@ -29,7 +29,22 @@ function timeFormat(time) {
 }
 
 const LinearGradient = function() {
-    function generateGradient(hi, low, unit) {
+    function generateUVIndexGradient() {
+        const colors = [];
+        for (let i=0; i<5; i++) {
+            colors.push(true);
+        }
+        let count = 6;
+        const background1 = firstBackgroundValue("white");
+        const background2 = secondBackgroundValue(colors, count);
+
+        return {
+            background1,
+            background2
+        };
+    }
+
+    function generateDayForecastGradient(hi, low, unit) {
         let background1 = "";   // Should contain the first color used in linear gradient.
         let count = 0;      // Number of colors to be used for gradient.
         const colors = [
@@ -100,7 +115,6 @@ const LinearGradient = function() {
             background1,
             background2
         };
-        
     }
 
     function getColorValue(color) {
@@ -163,7 +177,8 @@ const LinearGradient = function() {
     }
 
     return {
-        generateGradient
+        generateDayForecastGradient,
+        generateUVIndexGradient
     };
 }();
 
