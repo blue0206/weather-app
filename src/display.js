@@ -359,11 +359,16 @@ const SectionUVIndex = function() {
         }
         uvIndexContainer.appendChild(remarks);
         // UV-Index Gradient
+        // Gradient DOM element
         const gradient = document.createElement('div');
         gradient.className = "uv-gradient";
-        gradient.appendChild(marker);
         const gradientCSS = LinearGradient.generateUVIndexGradient();
         gradient.style.cssText = `${gradientCSS.background1} ${gradientCSS.background2}`;
+        // Gradient marker to spot current value position;
+        const marker = document.createElement("div");
+        marker.className = "uv-gradient-marker";
+        marker.style.left = `${parseInt(value.textContent) * 10}%`;
+        gradient.appendChild(marker);
         uvIndexContainer.appendChild(gradient);
 
         container.appendChild(uvIndexContainer);
