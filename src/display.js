@@ -21,6 +21,8 @@ function populateDisplay(data) {
     SectionPrecipitation.generate(data);
     // Update display for humidity data.
     SectionHumidity.generate(data);
+    // Update display for pressure data.
+    SectionPressure.generate(data);
 };
 
 const SectionHeader = function() {
@@ -431,6 +433,31 @@ const SectionHumidity = function() {
         dew.className = "dew-point";
         dew.textContent = `The dew point is ${Math.round(data.currentConditions.dew)}° right now.`;
         container.appendChild(dew);
+
+        parentElement.appendChild(container);
+    }
+
+    return { generate };
+}();
+
+const SectionPressure = function() {
+    function generate(data) {
+        const parentElement = document.querySelector(".pressure");
+        // Clear any existing child nodes of the node to be populated.
+        if (parentElement.lastChild) {
+          parentElement.removeChild(parentElement.lastChild);
+        }
+
+        // Container node to hold the data and append to parent.
+        const container = document.createElement("div");
+
+        // Heading of the pressure section (Icon + Heading)
+        container.appendChild(generateSectionHeading("PRESSURE"));
+
+        // Pressure data.
+        const pressure = document.createElement('div');
+        pressure.textContent = `${data.currentConditions.pressure}hPa`;
+        container.appendChild(pressure);
 
         parentElement.appendChild(container);
     }
