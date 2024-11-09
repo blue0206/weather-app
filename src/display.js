@@ -17,6 +17,8 @@ function populateDisplay(data) {
     SectionVisibility.generate(data);
     // Update display for uv-index data.
     SectionUVIndex.generate(data);
+    // Update display for precipitation data.
+    SectionPrecipitation.generate(data);
 };
 
 const SectionHeader = function() {
@@ -370,6 +372,32 @@ const SectionUVIndex = function() {
         uvIndexContainer.appendChild(gradient);
 
         container.appendChild(uvIndexContainer);
+        parentElement.appendChild(container);
+    }
+
+    return { generate };
+}();
+
+const SectionPrecipitation = function() {
+    function generate(data) {
+        const parentElement = document.querySelector(".precipitation");
+        // Clear any existing child nodes of the node to be populated.
+        if (parentElement.lastChild) {
+          parentElement.removeChild(parentElement.lastChild);
+        }
+
+        // Container node to hold the data and append to parent.
+        const container = document.createElement("div");
+
+        // Heading of the precipitation section (Icon + Heading)
+        container.appendChild(generateSectionHeading("PRECIPITATION"));
+
+        // Precipitation data.
+        const precipitation = document.createElement('div');
+        let displayValue = data.units == "metric" ? `${data.days[0].precip} mm` : `${data.days[0].precip}"`;
+        precipitation.textContent = displayValue;
+
+        container.appendChild(precipitation);
         parentElement.appendChild(container);
     }
 
