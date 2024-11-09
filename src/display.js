@@ -19,6 +19,8 @@ function populateDisplay(data) {
     SectionUVIndex.generate(data);
     // Update display for precipitation data.
     SectionPrecipitation.generate(data);
+    // Update display for humidity data.
+    SectionHumidity.generate(data);
 };
 
 const SectionHeader = function() {
@@ -398,6 +400,38 @@ const SectionPrecipitation = function() {
         precipitation.textContent = displayValue;
 
         container.appendChild(precipitation);
+        parentElement.appendChild(container);
+    }
+
+    return { generate };
+}();
+
+const SectionHumidity = function() {
+    function generate(data) {
+        const parentElement = document.querySelector(".humidity");
+        // Clear any existing child nodes of the node to be populated.
+        if (parentElement.lastChild) {
+          parentElement.removeChild(parentElement.lastChild);
+        }
+
+        // Container node to hold the data and append to parent.
+        const container = document.createElement("div");
+
+        // Heading of the humidity section (Icon + Heading)
+        container.appendChild(generateSectionHeading("HUMIDITY"));
+
+        // Humidity Value
+        const humidity = document.createElement('div');
+        humidity.className = "humidity-value";
+        humidity.textContent = `${Math.round(data.currentConditions.humidity)}%`;
+        container.appendChild(humidity);
+
+        // Dew Point Value
+        const dew = document.createElement('div');
+        dew.className = "dew-point";
+        dew.textContent = `The dew point is ${Math.round(data.currentConditions.dew)}° right now.`;
+        container.appendChild(dew);
+
         parentElement.appendChild(container);
     }
 
