@@ -168,34 +168,32 @@ const SectionDays = function() {
             const tempContainer = document.createElement('div');
             tempContainer.className = "temp-container";
 
-            const temp = document.createElement('div');
-            temp.className = "day-temp";
-            // Max temperature for the day.
-            const hi = document.createElement('div');
-            hi.className = "day-hi";
-            hi.textContent = `${Math.round(day.tempmax)}°`;
-            temp.appendChild(hi);
-            // Average temperature for the day.
-            const avg = document.createElement('div');
-            avg.className = "day-avg";
-            avg.textContent = `${Math.round(day.temp)}°`;
-            temp.appendChild(avg);
             // Min temperature for the day.
             const low = document.createElement('div');
             low.className = "day-low";
             low.textContent = `${Math.round(day.tempmin)}°`;
-            temp.appendChild(low);
-            
+            tempContainer.appendChild(low);
             // Temperature Gradient
             const tempGradient = document.createElement('div');
             tempGradient.className = "temp-gradient";
             const gradientCSS = LinearGradient.generateDayForecastGradient(Math.round(day.tempmax), Math.round(day.tempmin), data.units);
             tempGradient.style.cssText = `${gradientCSS.background1} ${gradientCSS.background2}`;
-
+            if (day === data.days[0]) {
+                const marker = document.createElement('div');
+                marker.className = "temp-gradient-marker";
+                const numerator = Math.round(data.currentConditions.temp) - Math.round(day.tempmin);
+                const denominator = Math.round(day.tempmax) - Math.round(day.tempmin);
+                marker.style.left = `${parseInt((numerator/denominator) * 100)}%`;
+                tempGradient.appendChild(marker);
+            }
             tempContainer.appendChild(tempGradient);
-            tempContainer.appendChild(temp);
-            container.appendChild(tempContainer);
+            // Max temperature for the day.
+            const hi = document.createElement('div');
+            hi.className = "day-hi";
+            hi.textContent = `${Math.round(day.tempmax)}°`;
+            tempContainer.appendChild(hi);    
 
+            container.appendChild(tempContainer);
             dataList.appendChild(container);
         });
         container.appendChild(dataList);
