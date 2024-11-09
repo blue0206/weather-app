@@ -23,6 +23,8 @@ function populateDisplay(data) {
     SectionHumidity.generate(data);
     // Update display for pressure data.
     SectionPressure.generate(data);
+    // Update display for sunrise data.
+    SectionSunrise.generate(data);
 };
 
 const SectionHeader = function() {
@@ -459,6 +461,37 @@ const SectionPressure = function() {
         pressure.textContent = `${data.currentConditions.pressure}hPa`;
         container.appendChild(pressure);
 
+        parentElement.appendChild(container);
+    }
+
+    return { generate };
+}();
+
+const SectionSunrise = function() {
+    function generate(data) {
+        const parentElement = document.querySelector(".sunrise");
+        // Clear any existing child nodes of the node to be populated.
+        if (parentElement.lastChild) {
+          parentElement.removeChild(parentElement.lastChild);
+        }
+
+        // Container node to hold the data and append to parent.
+        const container = document.createElement("div");
+
+        // Heading of the sunrise section (Icon + Heading)
+        container.appendChild(generateSectionHeading("SUNRISE"));
+
+        // Sunrise data.
+        const sunrise = document.createElement("div");
+        const time = document.createElement('div');
+        const timeObj = timeFormat(data.currentConditions.sunrise);
+        time.textContent = `${timeObj.hours12F}:${timeObj.minutes}`;
+        sunrise.appendChild(time);
+        const meridiem = document.createElement('div');
+        meridiem.textContent = "AM";
+        sunrise.appendChild(meridiem);
+
+        container.appendChild(sunrise);
         parentElement.appendChild(container);
     }
 
