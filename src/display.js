@@ -25,6 +25,8 @@ function populateDisplay(data) {
     SectionPressure.generate(data);
     // Update display for sunrise data.
     SectionSunrise.generate(data);
+    // Update display for sunset data.
+    SectionSunset.generate(data);
 };
 
 const SectionHeader = function() {
@@ -492,6 +494,37 @@ const SectionSunrise = function() {
         sunrise.appendChild(meridiem);
 
         container.appendChild(sunrise);
+        parentElement.appendChild(container);
+    }
+
+    return { generate };
+}();
+
+const SectionSunset = function() {
+    function generate(data) {
+        const parentElement = document.querySelector(".sunset");
+        // Clear any existing child nodes of the node to be populated.
+        if (parentElement.lastChild) {
+          parentElement.removeChild(parentElement.lastChild);
+        }
+
+        // Container node to hold the data and append to parent.
+        const container = document.createElement("div");
+
+        // Heading of the sunset section (Icon + Heading)
+        container.appendChild(generateSectionHeading("SUNSET"));
+
+        // Sunset data.
+        const sunset = document.createElement("div");
+        const time = document.createElement('div');
+        const timeObj = timeFormat(data.currentConditions.sunset);
+        time.textContent = `${timeObj.hours12F}:${timeObj.minutes}`;
+        sunset.appendChild(time);
+        const meridiem = document.createElement('div');
+        meridiem.textContent = "PM";
+        sunset.appendChild(meridiem);
+
+        container.appendChild(sunset);
         parentElement.appendChild(container);
     }
 
