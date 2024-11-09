@@ -27,6 +27,8 @@ function populateDisplay(data) {
     SectionSunrise.generate(data);
     // Update display for sunset data.
     SectionSunset.generate(data);
+    // Update display for moon data.
+    SectionMoon.generate(data);
 };
 
 const SectionHeader = function() {
@@ -525,6 +527,45 @@ const SectionSunset = function() {
         sunset.appendChild(meridiem);
 
         container.appendChild(sunset);
+        parentElement.appendChild(container);
+    }
+
+    return { generate };
+}();
+
+const SectionMoon = function() {
+    function generate(data) {
+        const parentElement = document.querySelector(".moon");
+        // Clear any existing child nodes of the node to be populated.
+        if (parentElement.lastChild) {
+          parentElement.removeChild(parentElement.lastChild);
+        }
+
+        // Container node to hold the data and append to parent.
+        const container = document.createElement("div");
+
+        // Heading of the moon section (Icon + Heading)
+        let heading = "";
+        const moonPhase = data.currentConditions.moonphase;
+        if (moonPhase == 0) {
+            heading = "NEW MOON";
+        } else if (moonPhase > 0 && moonPhase < 0.25) {
+            heading = "WAXING CRESCENT";
+        } else if (moonPhase == 0.25) {
+            heading = "FIRST QUARTER";
+        } else if (moonPhase > 0.25 && moonPhase < 0.5) {
+            heading = "WAXING GIBBOUS";
+        } else if (moonPhase == 0.5) {
+            heading = "FULL MOON";
+        } else if (moonPhase > 0.5 && moonPhase < 0.75) {
+            heading = "WANING GIBBOUS";
+        } else if (moonPhase == 0.75) {
+            heading = "LAST QUARTER";
+        } else if (moonPhase > 0.75) {
+            heading = "WANING CRESCENT";
+        }
+        container.appendChild(generateSectionHeading(heading));
+
         parentElement.appendChild(container);
     }
 
