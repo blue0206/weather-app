@@ -266,3 +266,77 @@ input[type="radio"]:checked {
 .moon {
     grid-area: moon;
 }
+
+/* Icons */
+.day-icon, .hour-icon {
+    height: 1.5em;
+    aspect-ratio: 1 / 1;
+}
+
+.day-icon.clear-day, .hour-icon.clear-day {
+    background-color: hsl(51, 100%, 50%);
+    mask-image: url("./assets/icons/clear-day.svg");
+}
+.day-icon.clear-night, .hour-icon.clear-night {
+    background-image: url("./assets/icons/clear-night.svg");
+}
+.cloudy {
+    background-image: url("./assets/icons/cloudy.svg");
+}
+.fog {
+    background-image: url("./assets/icons/fog.svg");
+}
+.hail {
+    background-image: url("./assets/icons/hail.svg");
+}
+.partly-cloudy-day {
+    background-image: url("./assets/icons/partly-cloudy-day.svg");
+}
+.partly-cloudy-night {
+    background-image: url("./assets/icons/partly-cloudy-night.svg");
+}
+.rain-snow-showers-day {
+    background-image: url("./assets/icons/rain-snow-showers-day.svg");
+}
+.rain-snow-showers-night {
+    background-image: url("./assets/icons/rain-snow-showers-night.svg");
+}
+.rain-snow {
+    background-image: url("./assets/icons/rain-snow.svg");
+}
+.rain {
+    background-image: url("./assets/icons/rain.svg");
+}
+.showers-day {
+    background-image: url("./assets/icons/showers-day.svg");
+}
+.showers-night {
+    background-image: url("./assets/icons/showers-night.svg");
+}
+.sleet {
+    background-image: url("./assets/icons/sleet.svg");
+}
+.snow-showers-day {
+    background-image: url("./assets/icons/snow-showers-day.svg");
+}
+.snow-showers-night {
+    background-image: url("./assets/icons/snow-showers-night.svg");
+}
+.snow {
+    background-image: url("./assets/icons/snow.svg");
+}
+.thunder-rain {
+    background-image: url("./assets/icons/thunder-rain.svg");
+}
+.thunder-showers-day {
+    background-image: url("./assets/icons/thunder-showers-day.svg");
+}
+.thunder-showers-night {
+    background-image: url("./assets/icons/thunder-showers-night.svg");
+}
+.thunder {
+    background-image: url("./assets/icons/thunder.svg");
+}
+.day-icon.wind, .hour-icon.wind {
+    background-image: url("./assets/icons/wind.svg");
+}
