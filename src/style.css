@@ -219,3 +219,50 @@ input[type="radio"]:checked {
     height: 1.5em;
     aspect-ratio: 1 / 1;
 }
+
+
+
+.days {
+    grid-area: forecast;
+    overflow-y: auto;
+}
+
+.feels-like {
+    grid-area: feels-like;
+}
+
+.winds {
+    grid-area: wind;
+}
+
+.visibility {
+    grid-area: visibility;
+}
+
+.uv-index {
+    grid-area: uv-index;
+}
+
+.precipitation {
+    grid-area: precipitation;
+}
+
+.humidity {
+    grid-area: humidity;
+}
+
+.pressure {
+    grid-area: pressure;
+}
+
+.sunrise {
+    grid-area: sunrise;
+}
+
+.sunset {
+    grid-area: sunset;
+}
+
+.moon {
+    grid-area: moon;
+}
