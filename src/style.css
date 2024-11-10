@@ -30,14 +30,13 @@ p, h1, h2, h3, h4, h5, h6 {
 
 /* Top Level*/
 body {
-    font-size: 1.2rem;
+    font-size: 1rem;
 
     display: grid;
     grid-template: auto 1fr 125px / 1fr;
 
     min-height: 98vh;
     min-height: 100dvh;
-    background-color: aliceblue;
 }
 
 main {
@@ -58,6 +57,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-weight: 800;
 }
 
 .header-container > .location {
@@ -65,7 +65,8 @@ main {
 }
 
 .header-container > .head-temp {
-    font-size: 3rem;
+    font-size: 3.5rem;
+    font-weight: 200;
 }
 
 .header .head-hi-low {
@@ -106,4 +107,85 @@ input[type="radio"]:checked {
 
 #switch-to-C::before {
     content: "°C";
+}
+
+.data-tiles {
+    display: grid;
+    grid-template: repeat(4, 1fr) / 2fr repeat(4, 1fr);
+    grid-template-areas: 
+                        'hours hours hours hours hours'
+                        'forecast feels-like wind wind visibility'
+                        'forecast uv-index precipitation humidity pressure'
+                        'forecast sunrise sunset moon moon';
+    gap: 16px;
+    margin-inline: auto;
+
+    max-height: 65vh;
+    max-width: max(65vw, 880px);
+}
+
+.hours {
+    grid-area: hours;
+    padding-top: 5px;
+    padding-bottom: 0;
+}
+
+.hours > div {
+    display: grid;
+    grid-template-rows: auto, 1fr;
+    gap: 8px;
+    padding: 8px 16px;
+    padding-bottom: 0;
+}
+
+.hourly-data-container {
+    display: flex;
+    gap: 25px;
+
+
+    overflow-x: auto;
+}
+
+.hour-data {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    gap: 25px;
+    padding: 11px;
+    padding-left: 0;
+
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.hour-time {
+    display: flex;
+    align-items: flex-end;
+}
+
+.hour-time > div:first-child {
+    line-height: normal;
+}
+
+.hour-time > div:last-child {
+    font-size: 0.65rem;
+    align-self: flex-end;
+}
+
+.hour-temp {
+    font-size: 1rem;
+}
+
+.data-heading {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1.25px;
+}
+
+.data-heading > img {
+    height: 1.5em;
+    aspect-ratio: 1 / 1;
 }
