@@ -1,6 +1,25 @@
 import { format } from "date-fns";
 import { timeFormat } from "./utility";
 import { LinearGradient } from "./utility";
+import HoursIcon from "./assets/icons/hours.svg";
+import DaysIcon from "./assets/icons/days.svg";
+import FeelsLikeIcon from "./assets/icons/feels-like.svg";
+import WindIcon from "./assets/icons/wind.svg";
+import VisibilityIcon from "./assets/icons/visibility.svg";
+import UVIndexIcon from "./assets/icons/clear-day.svg";
+import PrecipitationIcon from "./assets/icons/precipitation.svg";
+import HumidityIcon from "./assets/icons/humidity.svg";
+import PressureIcon from "./assets/icons/pressure.svg";
+import SunriseIcon from "./assets/icons/sunrise.svg";
+import SunsetIcon from "./assets/icons/sunset.svg";
+import MoonFQ from "./assets/icons/moon-first-quarter.svg";
+import MoonFull from "./assets/icons/moon-full.svg";
+import MoonLQ from "./assets/icons/moon-last-quarter.svg";
+import MoonNew from "./assets/icons/moon-new.svg";
+import MoonWaningC from "./assets/icons/moon-waning-crescent.svg";
+import MoonWaningG from "./assets/icons/moon-waning-gibbous.svg";
+import MoonWaxingC from "./assets/icons/moon-waxing-crescent.svg";
+import MoonWaxingG from "./assets/icons/moon-waxing-gibbous.svg";
 
 function populateDisplay(data) {
     // Update the header display.
@@ -65,7 +84,7 @@ const SectionHours = function() {
         const container = document.createElement('div');
     
         // Heading of the hourly weather data section (Icon + Heading)
-        container.appendChild(generateSectionHeading("HOURLY FORECAST"));
+        container.appendChild(generateSectionHeading("HOURLY FORECAST", HoursIcon));
     
         // Actual hourly data to be displayed in display section.
         const dataList = document.createElement('div');
@@ -109,7 +128,7 @@ const SectionHours = function() {
             time.appendChild(suffix);
             container.appendChild(time);
     
-            const conditionIcon = new Image();
+            const conditionIcon = document.createElement('div');
             conditionIcon.classList.add("hour-icon");
             conditionIcon.classList.add(hour.icon);
             container.appendChild(conditionIcon);
@@ -145,7 +164,7 @@ const SectionDays = function() {
         const container = document.createElement('div');
 
         // Heading of the daily weather forecast section (Icon + Heading)
-        container.appendChild(generateSectionHeading("15-DAY FORECAST"));
+        container.appendChild(generateSectionHeading("15-DAY FORECAST", DaysIcon));
 
         // Actual daily data to be displayed in display section.
         const dataList = document.createElement('div');
@@ -171,7 +190,7 @@ const SectionDays = function() {
             container.appendChild(dayOfWeek);
 
             // Weather icon for the day.
-            const icon = new Image();
+            const icon = document.createElement("div");
             icon.classList.add("day-icon");
             icon.classList.add(day.icon);
             container.appendChild(icon);
@@ -195,7 +214,7 @@ const SectionDays = function() {
                 marker.className = "temp-gradient-marker";
                 const numerator = Math.round(data.currentConditions.temp) - Math.round(day.tempmin);
                 const denominator = Math.round(day.tempmax) - Math.round(day.tempmin);
-                marker.style.left = `${parseInt((numerator/denominator) * 100)}%`;
+                marker.style.left = `${parseInt((numerator/denominator) * 100) - 5}%`;
                 tempGradient.appendChild(marker);
             }
             tempContainer.appendChild(tempGradient);
@@ -228,7 +247,7 @@ const SectionFeelsLikeTemp = function() {
         const container = document.createElement('div');
 
         // Heading of the feels-like temperature section (Icon + Heading)
-        container.appendChild(generateSectionHeading("FEELS LIKE"));
+        container.appendChild(generateSectionHeading("FEELS LIKE", FeelsLikeIcon));
 
         // Temperature
         const temp = document.createElement('div');
@@ -244,7 +263,7 @@ const SectionFeelsLikeTemp = function() {
 
 const SectionWind = function() {
     function generate(data) {
-        const parentElement = document.querySelector(".wind");
+        const parentElement = document.querySelector(".winds");
         // Clear any existing child nodes of the node to be populated.
         if (parentElement.lastChild) {
             parentElement.removeChild(parentElement.lastChild);
@@ -254,7 +273,7 @@ const SectionWind = function() {
         const container = document.createElement('div');
 
         // Heading of the wind section (Icon + Heading)
-        container.appendChild(generateSectionHeading("WIND"));
+        container.appendChild(generateSectionHeading("WIND", WindIcon));
 
         // Wind Data
         const windContainer = document.createElement('div');
@@ -321,7 +340,7 @@ const SectionVisibility = function() {
         const container = document.createElement("div");
 
         // Heading of the visibility section (Icon + Heading)
-        container.appendChild(generateSectionHeading("VISIBILITY"));
+        container.appendChild(generateSectionHeading("VISIBILITY", VisibilityIcon));
 
         // Visibility data.
         const visibility = document.createElement('div');
@@ -347,7 +366,7 @@ const SectionUVIndex = function() {
         const container = document.createElement("div");
 
         // Heading of the uv-index section (Icon + Heading)
-        container.appendChild(generateSectionHeading("UV INDEX"));
+        container.appendChild(generateSectionHeading("UV INDEX", UVIndexIcon));
 
         // UV-Index Data Container
         const uvIndexContainer = document.createElement('div');
@@ -400,7 +419,7 @@ const SectionPrecipitation = function() {
         const container = document.createElement("div");
 
         // Heading of the precipitation section (Icon + Heading)
-        container.appendChild(generateSectionHeading("PRECIPITATION"));
+        container.appendChild(generateSectionHeading("PRECIPITATION", PrecipitationIcon));
 
         // Precipitation data.
         const precipitation = document.createElement('div');
@@ -426,7 +445,7 @@ const SectionHumidity = function() {
         const container = document.createElement("div");
 
         // Heading of the humidity section (Icon + Heading)
-        container.appendChild(generateSectionHeading("HUMIDITY"));
+        container.appendChild(generateSectionHeading("HUMIDITY", HumidityIcon));
 
         // Humidity Value
         const humidity = document.createElement('div');
@@ -458,7 +477,7 @@ const SectionPressure = function() {
         const container = document.createElement("div");
 
         // Heading of the pressure section (Icon + Heading)
-        container.appendChild(generateSectionHeading("PRESSURE"));
+        container.appendChild(generateSectionHeading("PRESSURE", PressureIcon));
 
         // Pressure data.
         const pressure = document.createElement('div');
@@ -483,7 +502,7 @@ const SectionSunrise = function() {
         const container = document.createElement("div");
 
         // Heading of the sunrise section (Icon + Heading)
-        container.appendChild(generateSectionHeading("SUNRISE"));
+        container.appendChild(generateSectionHeading("SUNRISE", SunriseIcon));
 
         // Sunrise data.
         const sunrise = document.createElement("div");
@@ -514,7 +533,7 @@ const SectionSunset = function() {
         const container = document.createElement("div");
 
         // Heading of the sunset section (Icon + Heading)
-        container.appendChild(generateSectionHeading("SUNSET"));
+        container.appendChild(generateSectionHeading("SUNSET", SunsetIcon));
 
         // Sunset data.
         const sunset = document.createElement("div");
@@ -546,25 +565,34 @@ const SectionMoon = function() {
 
         // Heading of the moon section (Icon + Heading)
         let heading = "";
+        let iconSrc = undefined;
         const moonPhase = data.currentConditions.moonphase;
         if (moonPhase == 0) {
             heading = "NEW MOON";
+            iconSrc = MoonNew;
         } else if (moonPhase > 0 && moonPhase < 0.25) {
             heading = "WAXING CRESCENT";
+            iconSrc = MoonWaxingC;
         } else if (moonPhase == 0.25) {
             heading = "FIRST QUARTER";
+            iconSrc = MoonFQ;
         } else if (moonPhase > 0.25 && moonPhase < 0.5) {
             heading = "WAXING GIBBOUS";
+            iconSrc = MoonWaxingG;
         } else if (moonPhase == 0.5) {
             heading = "FULL MOON";
+            iconSrc = MoonFull;
         } else if (moonPhase > 0.5 && moonPhase < 0.75) {
             heading = "WANING GIBBOUS";
+            iconSrc = MoonWaningG;
         } else if (moonPhase == 0.75) {
             heading = "LAST QUARTER";
+            iconSrc = MoonLQ;
         } else if (moonPhase > 0.75) {
             heading = "WANING CRESCENT";
+            iconSrc = MoonWaningC;
         }
-        container.appendChild(generateSectionHeading(heading));
+        container.appendChild(generateSectionHeading(heading, iconSrc));
 
         // Moon data.
         // Moonrise
@@ -622,7 +650,7 @@ function generateSectionHeading(title, source) {
     const headingContainer = document.createElement('div');
     headingContainer.className = "data-heading";
     const icon = new Image();
-    icon.src = "";
+    icon.src = source;
     headingContainer.appendChild(icon);
     const heading = document.createElement('div');
     heading.textContent = title;
