@@ -225,6 +225,7 @@ input[type="radio"]:checked {
     grid-area: forecast;
 
     padding-right: 0;
+    min-width: 320px;
 }
 
 .days > div {
@@ -285,21 +286,27 @@ input[type="radio"]:checked {
     border: 2px solid hsl(0, 0%, 0%);
 }
 
-/* Feels-Like Section */
+/* Feels-Like & Visibility Section */
 .feels-like {
     grid-area: feels-like;
+}
+.visibility {
+    grid-area: visibility;
+}
+
+.feels-like, .visibility {
     aspect-ratio: 1 / 1;
 
     display: grid;
 }
 
-.feels-like > div {
+.feels-like > div, .visibility > div {
     display: grid;
     grid-template-rows: auto 1fr;
     gap: 11px;
 }
 
-.temp-feels-like {
+.temp-feels-like, .visibility > div > div:last-child {
     font-size: 2.8rem;
 }
 
@@ -344,11 +351,6 @@ input[type="radio"]:checked {
     height: 100%;
     width: 1px;
     background-color: black;
-}
-
-.visibility {
-    grid-area: visibility;
-    aspect-ratio: 1 / 1;
 }
 
 .uv-index {
