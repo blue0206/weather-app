@@ -181,7 +181,6 @@ const SectionDays = function() {
 
             // The day of the week.
             const dayOfWeek = document.createElement('div');
-            dayOfWeek.className = '.day';
             if (day === data.days[0]) {
                 dayOfWeek.textContent = "Today";
             } else {
@@ -201,7 +200,6 @@ const SectionDays = function() {
 
             // Min temperature for the day.
             const low = document.createElement('div');
-            low.className = "day-low";
             low.textContent = `${Math.round(day.tempmin)}°`;
             tempContainer.appendChild(low);
             // Temperature Gradient
@@ -220,7 +218,6 @@ const SectionDays = function() {
             tempContainer.appendChild(tempGradient);
             // Max temperature for the day.
             const hi = document.createElement('div');
-            hi.className = "day-hi";
             hi.textContent = `${Math.round(day.tempmax)}°`;
             tempContainer.appendChild(hi);    
 
