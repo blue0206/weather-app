@@ -478,7 +478,7 @@ const SectionPressure = function() {
 
         // Pressure data.
         const pressure = document.createElement('div');
-        pressure.textContent = `${data.currentConditions.pressure}hPa`;
+        pressure.textContent = `${data.currentConditions.pressure} hPa`;
         container.appendChild(pressure);
 
         parentElement.appendChild(container);
