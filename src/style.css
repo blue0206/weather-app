@@ -157,6 +157,7 @@ input[type="radio"]:checked {
     padding: 13px 16px;
 }
 
+/* Hourly Forecast Section */
 .hours {
     grid-area: hours;
 
@@ -220,6 +221,7 @@ input[type="radio"]:checked {
     aspect-ratio: 1 / 1;
 }
 
+/* Daily Forecast Section */
 .days {
     grid-area: forecast;
 
@@ -266,6 +268,7 @@ input[type="radio"]:checked {
     gap: 8px;
 }
 
+/* Linear Gradients and Marker Setup */
 .temp-gradient, .uv-gradient {
     height: 5px;
     border-radius: 11px;
@@ -283,8 +286,20 @@ input[type="radio"]:checked {
     border: 2px solid hsl(0, 0%, 0%);
 }
 
+/* Feels-Like Section */
 .feels-like {
     grid-area: feels-like;
+
+    aspect-ratio: 1 / 1;
+}
+
+.feels-like > div {
+    display: grid;
+    gap: 11px;
+}
+
+.temp-feels-like {
+    font-size: 2.5rem;
 }
 
 .winds {
