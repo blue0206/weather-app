@@ -63,10 +63,7 @@ body {
                 Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
     display: grid;
-    grid-template: auto 1fr 125px / 1fr;
-
-    min-height: 98vh;
-    min-height: 100dvh;
+    grid-template-rows: auto 1fr 125px;
 }
 
 main {
@@ -141,7 +138,7 @@ input[type="radio"]:checked {
 
 .data-tiles {
     display: grid;
-    grid-template: repeat(4, 1fr) / 2fr repeat(4, 1fr);
+    grid-template: repeat(4, 1fr) / 2.5fr repeat(4, 1fr);
     grid-template-areas: 
                         'hours hours hours hours hours'
                         'forecast feels-like wind wind visibility'
@@ -150,13 +147,19 @@ input[type="radio"]:checked {
     gap: 16px;
     margin-inline: auto;
 
-    max-height: 65vh;
+    max-height: max(65vh, 850px);
     max-width: max(65vw, 880px);
+}
+
+.data-tiles > * {
+    border: 1px solid black;
+    border-radius: 11px;
+    padding: 13px 16px;
 }
 
 .hours {
     grid-area: hours;
-    padding-top: 5px;
+
     padding-bottom: 0;
 }
 
@@ -164,14 +167,11 @@ input[type="radio"]:checked {
     display: grid;
     grid-template-rows: auto, 1fr;
     gap: 8px;
-    padding: 8px 16px;
-    padding-bottom: 0;
 }
 
 .hourly-data-container {
     display: flex;
     gap: 25px;
-
 
     overflow-x: auto;
 }
@@ -220,11 +220,67 @@ input[type="radio"]:checked {
     aspect-ratio: 1 / 1;
 }
 
-
-
 .days {
     grid-area: forecast;
+
+    padding-right: 0;
+}
+
+.days > div {
+    display: grid;
+    grid-template-rows: auto, 1fr;
+    gap: 25px;
+}
+
+.daily-data-container {
+    display: grid;
+    gap: 16px;
+
     overflow-y: auto;
+    height: calc(1.5 * 2em * 11);
+
+    padding-right: 16px;
+}
+
+.daily-data-container > .h-line {
+    width: 100%;
+    height: 1px;
+    background-color: rgb(196, 196, 196);
+}
+
+.day-data {
+    display: grid;
+    grid-template-columns: 0.3fr auto 1fr;
+    gap: 5px;
+    font-weight: 800;
+}
+
+.day-icon {
+    margin-right: 16px;
+}
+
+.temp-container {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 8px;
+}
+
+.temp-gradient, .uv-gradient {
+    height: 5px;
+    border-radius: 11px;
+
+    position: relative;
+}
+
+.temp-gradient-marker, .uv-gradient-marker {
+    position: absolute;
+
+    height: inherit;
+    aspect-ratio: 1 / 0.65;
+    border-radius: 11px;
+    background-color: hsl(0, 0%, 100%);
+    border: 2px solid hsl(0, 0%, 0%);
 }
 
 .feels-like {
