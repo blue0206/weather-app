@@ -286,27 +286,45 @@ input[type="radio"]:checked {
     border: 2px solid hsl(0, 0%, 0%);
 }
 
-/* Feels-Like & Visibility Section */
+/* Feels-Like, Visibility, Precipitation & Pressure Sections */
 .feels-like {
     grid-area: feels-like;
 }
 .visibility {
     grid-area: visibility;
 }
+.precipitation {
+    grid-area: precipitation;
+}
+.pressure {
+    grid-area: pressure;
+}
 
-.feels-like, .visibility {
+.feels-like, 
+.visibility, 
+.precipitation,
+.pressure {
     aspect-ratio: 1 / 1;
 
     display: grid;
 }
 
-.feels-like > div, .visibility > div {
+.feels-like > div, 
+.visibility > div, 
+.precipitation > div,
+.pressure > div {
     display: grid;
     grid-template-rows: auto 1fr;
     gap: 11px;
 }
 
-.temp-feels-like, .visibility > div > div:last-child {
+.visibility > div > div:last-child,
+.pressure > div > div:last-child {
+    font-size: 2rem;
+}
+
+.temp-feels-like,
+.precipitation > div > div:last-child {
     font-size: 2.8rem;
 }
 
@@ -357,18 +375,8 @@ input[type="radio"]:checked {
     grid-area: uv-index;
 }
 
-.precipitation {
-    grid-area: precipitation;
-    aspect-ratio: 1 / 1;
-}
-
 .humidity {
     grid-area: humidity;
-    aspect-ratio: 1 / 1;
-}
-
-.pressure {
-    grid-area: pressure;
     aspect-ratio: 1 / 1;
 }
 
