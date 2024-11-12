@@ -1,5 +1,6 @@
-import { createURL, getData } from "./data-handler";
 import "./style.css";
+import { createURL, getData } from "./data-handler";
+import { populateDisplay } from "./display";
 
 const FormControl = function() {
     const location = document.querySelector("#location");
@@ -8,15 +9,21 @@ const FormControl = function() {
     submitBtn.addEventListener('click', async (event) => {
         if (location.value != "") {
             event.preventDefault();
-
-            let url = createURL(location.value);
-            console.log(url.imperialURL, url.metricURL);
-
-            const imperialData = await getData(url.imperialURL);
-            const metricData = await getData(url.metricURL);
-
-            console.log("IMPERIAL DATA", imperialData);
-            console.log("METRIC DATA", metricData);
+            searchResults(location.value);
         }
     });
 }();
+
+async function searchResults(location) {
+    let url = createURL(location);
+    const imperialData = await getData(url.imperialURL);
+    imperialData.units = "imperial";
+    const metricData = await getData(url.metricURL);
+    metricData.units = "metric";
+    populateDisplay(imperialData);
+    if (searchResultObjects.length) {
+        searchResultObjects.splice(0, searchResultObjects.length);
+    }
+    searchResultObjects.push(imperialData);
+    searchResultObjects.push(metricData);
+}
