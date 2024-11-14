@@ -371,10 +371,39 @@ input[type="radio"]:checked {
     background-color: black;
 }
 
+/* UV Index Section */
 .uv-index {
     grid-area: uv-index;
+
+    display: grid;
 }
 
+.uv-index > div {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 11px;
+}
+
+.uv-index-data-container {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+
+    font-weight: 800;
+}
+
+.uv-index-data-container > div:first-child {
+    font-size: 2.8rem;
+}
+
+.uv-index-data-container > div:nth-child(2) {
+    font-size: 1.25rem;
+}
+
+.uv-index-data-container > div:last-child {
+    margin-top: 25px;
+}
+
+/* Humidity Section */
 .humidity {
     grid-area: humidity;
     aspect-ratio: 1 / 1;
