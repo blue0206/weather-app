@@ -424,14 +424,35 @@ input[type="radio"]:checked {
     font-size: 0.85rem;
 }
 
+/* Sunrise and Sunset Section */
 .sunrise {
     grid-area: sunrise;
+}
+.sunset {
+    grid-area: sunset;
+}
+.sunrise, .sunset {
     aspect-ratio: 1 / 1;
 }
 
-.sunset {
-    grid-area: sunset;
-    aspect-ratio: 1 / 1;
+.sunrise > div, .sunset > div {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 11px;
+}
+
+.sunrise .data-heading + div, 
+.sunset .data-heading + div {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: baseline;
+    line-height: normal;
+    font-size: 2rem;
+}
+
+.sunrise .data-heading + div > div:last-child,
+.sunset .data-heading + div > div:last-child {
+    font-size: 1.5rem;
 }
 
 .moon {
