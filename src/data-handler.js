@@ -1,7 +1,25 @@
+import { populateDisplay } from "./display";
+
 const searchResults = {
     imperialData: null,
     metricData: null
 };
+
+async function fetchAndDisplay(location) {
+    // Create URL.
+    let url = createURL(location);
+    // Fetch data in imperial units.
+    const imperialData = await getData(url.imperialURL);
+    imperialData.units = "imperial";
+    // Fetch data in metric units.
+    const metricData = await getData(url.metricURL);
+    metricData.units = "metric";
+    // Store data in an object for access without fetch request.
+    searchResults.imperialData = imperialData;
+    searchResults.metricData = metricData;
+    // Display fetched data in default imperial units.
+    populateDisplay(imperialData);
+}
 
 function createURL(location) {
     const resolvedLocation = location.split(' ').join('-');
@@ -43,4 +61,4 @@ async function getData(url) {
     }
 }
 
-export { searchResults };
+export { searchResults, fetchAndDisplay };
