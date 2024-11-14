@@ -12,3 +12,10 @@ const FormControl = function() {
         }
     });
 }();
+
+const DisplayControl = function() {
+    // Window load event listener.
+    window.addEventListener("load", () => {
+        fetchAndDisplay("sadh nagar");
+    })
+}();
