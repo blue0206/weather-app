@@ -1,5 +1,6 @@
 import "./style.css";
-import { fetchAndDisplay } from "./data-handler";
+import { searchResults, fetchAndDisplay } from "./data-handler";
+import { populateDisplay } from "./display";
 
 const FormControl = function() {
     const location = document.querySelector("#location");
@@ -18,4 +19,14 @@ const DisplayControl = function() {
     window.addEventListener("load", () => {
         fetchAndDisplay("sadh nagar");
     })
+    
+    // Unit switch event listeners.
+    const switchToF = document.querySelector("#switch-to-F");
+    switchToF.addEventListener("click", () => {
+        populateDisplay(searchResults.imperialData);
+    });
+    const switchToC = document.querySelector("#switch-to-C");
+    switchToC.addEventListener("click", () => {
+        populateDisplay(searchResults.metricData);
+    });
 }();
