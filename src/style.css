@@ -387,8 +387,6 @@ input[type="radio"]:checked {
 .uv-index-data-container {
     display: grid;
     grid-template-rows: auto auto 1fr;
-
-    font-weight: 800;
 }
 
 .uv-index-data-container > div:first-child {
@@ -397,6 +395,7 @@ input[type="radio"]:checked {
 
 .uv-index-data-container > div:nth-child(2) {
     font-size: 1.25rem;
+    font-weight: 800;
 }
 
 .uv-index-data-container > div:last-child {
@@ -407,6 +406,22 @@ input[type="radio"]:checked {
 .humidity {
     grid-area: humidity;
     aspect-ratio: 1 / 1;
+
+    display: grid;
+}
+
+.humidity > div {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 11px;
+}
+
+.humidity-value {
+    font-size: 2.8rem;
+}
+
+.dew-point {
+    font-size: 0.85rem;
 }
 
 .sunrise {
