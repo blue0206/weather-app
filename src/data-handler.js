@@ -1,3 +1,8 @@
+const searchResults = {
+    imperialData: null,
+    metricData: null
+};
+
 function createURL(location) {
     const resolvedLocation = location.split(' ').join('-');
     const apiKey = "FQNNDH99DKU5EPWAR5GGXRSN6";
@@ -38,4 +43,4 @@ async function getData(url) {
     }
 }
 
-export {createURL, getData};
+export { searchResults };
