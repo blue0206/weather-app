@@ -10,6 +10,8 @@ const FormControl = function() {
         if (location.value != "") {
             event.preventDefault();
             fetchAndDisplay(location.value);
+            // Set °F unit switch as checked since it is the default state.
+            document.querySelector("#switch-to-F").checked = true;
             // Clear input.
             location.value = "";
         }
