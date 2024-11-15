@@ -208,6 +208,22 @@ input[type="radio"]:checked {
     font-size: 1rem;
 }
 
+.hour-icon {
+    justify-self: center;
+}
+
+.hour-sunrise, .hour-sunset {
+    background-color: hsl(47, 100%, 50%);
+    mask-size: contain;
+}
+
+.hour-sunrise {
+    mask-image: url("./assets/icons/sunrise.svg");
+}
+.hour-sunset {
+    mask-image: url("./assets/icons/sunset.svg");
+}
+
 .data-heading {
     display: flex;
     gap: 8px;
