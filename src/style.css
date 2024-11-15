@@ -596,3 +596,35 @@ input[type="radio"]:checked {
 .day-icon.wind, .hour-icon.wind {
     background-image: url("./assets/icons/wind.svg");
 }
+
+/* Footer Style */
+footer {
+    display: grid;
+    place-content: center;
+    background-color: hsla(0, 0%, 0%, 0.926);
+    color: hsl(304, 100%, 90%);
+
+    margin-top: 16px;
+}
+
+footer .icon {
+    background-image: url("./assets/icons/github-icon.svg");
+    background-size: contain;
+    height: 1.5em;
+    aspect-ratio: 1 / 1;
+}
+
+footer > div {
+    display: flex;
+}
+
+footer  span {
+    display: flex;
+    gap: 5px;
+    margin-inline: 5px;
+}
+
+footer a {
+    color: dodgerblue;
+    text-decoration: none;
+}
