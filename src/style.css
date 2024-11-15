@@ -643,6 +643,7 @@ footer {
     place-content: center;
     background-color: hsla(0, 0%, 0%, 0.926);
     color: hsl(304, 100%, 90%);
+    gap: 16px;
 
     margin-top: 16px;
 }
@@ -656,6 +657,7 @@ footer .icon {
 
 footer > div {
     display: flex;
+    place-self: center;
 }
 
 footer  span {
@@ -667,4 +669,10 @@ footer  span {
 footer a {
     color: dodgerblue;
     text-decoration: none;
+}
+
+/* Footer Credits */
+.image-credits {
+    display: flex;
+    gap: 5px;
 }
