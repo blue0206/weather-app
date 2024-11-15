@@ -146,6 +146,13 @@ form:has(>#location:focus) {
     grid-template-rows: repeat(4, auto);
     place-content: center;
     gap: 4px;
+    backdrop-filter: blur(5px);
+}
+/* Disable blur in backgrounds it is not required */
+.bg-night .header,
+.bg-cloudy-night .header,
+.bg-rain .header {
+    backdrop-filter: blur(0);
 }
 
 .header-container {
@@ -187,6 +194,7 @@ input[type="radio"] {
     appearance: none;
     opacity: 0.25;
     cursor: pointer;
+    color: inherit;
 }
 
 input[type="radio"]:checked {
