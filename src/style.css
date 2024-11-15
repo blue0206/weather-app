@@ -64,6 +64,35 @@ body {
 
     display: grid;
     grid-template-rows: auto 1fr 125px;
+
+    color: white;
+    background-size: contain;
+}
+/* Background Images */
+.bg-night {
+    background-image: url("./assets/images/bg-night.jpg");
+}
+.bg-sunset {
+    background-image: url("./assets/images/bg-sunset.jpg");
+}
+.bg-sunrise {
+    background-image: url("./assets/images/bg-sunrise.jpg");
+    background-size: cover;
+}
+.bg-rain {
+    background-image: url("./assets/images/bg-rain.jpg");
+    background-size: cover;
+}
+.bg-day {
+    background-image: url("./assets/images/bg-day.jpg");
+    background-size: cover;
+}
+.bg-cloudy-day {
+    background-image: url("./assets/images/bg-cloudy-day.jpg");
+}
+.bg-cloudy-night {
+    background-image: url("./assets/images/bg-cloudy-night.jpg");
+    background-size: cover;
 }
 
 main {
