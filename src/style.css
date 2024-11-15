@@ -188,8 +188,11 @@ input[type="radio"]:checked {
 }
 
 .hour-time {
-    display: flex;
-    align-items: flex-end;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: baseline;
+    line-height: normal;
+    gap: 2px;
 }
 
 .hour-time > div:first-child {
@@ -448,6 +451,7 @@ input[type="radio"]:checked {
     align-items: baseline;
     line-height: normal;
     font-size: 2rem;
+    gap: 2px;
 }
 
 .sunrise .data-heading + div > div:last-child,
