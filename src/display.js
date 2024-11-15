@@ -100,13 +100,26 @@ const SectionHours = function() {
     
     function generate24HourForecast(data, dataList, currentHourObj, currentDay, forecastCounter) {
         let day = currentDay;
+        // Boolean variables to make sure that there is only one entry each of sunrise and sunset.
+        let sunriseEntryVacancy = true;
+        let sunsetEntryVacancy = true;
         for (let i=0; i<24 && forecastCounter <= 24; i++) {
             const hour = data.days[day].hours[i];
             const hourObj = timeFormat(hour.datetime);
+            let sunriseObj = timeFormat(data.days[day].sunrise);
+            let sunsetObj = timeFormat(data.days[day].sunset);
 
             // Skip if the hour is prior to current hour.
             if (day == 0 && hourObj.hours < currentHourObj.hours) {
                 continue;
+            }
+            // Create entry for sunrise and sunset.
+            if ((sunriseObj.hours == hourObj.hours && sunriseObj.minutes == hourObj.minutes) || (sunriseObj.hours == hourObj.hours-1 && sunriseEntryVacancy)) {
+                dataList.appendChild(sunriseSunsetDOM(sunriseObj, true));
+                sunriseEntryVacancy = false;
+            } else if ((sunsetObj.hours == hourObj.hours && sunsetObj.minutes == hourObj.minutes) || (sunsetObj.hours == hourObj.hours-1 && sunsetEntryVacancy)) {
+                dataList.appendChild(sunriseSunsetDOM(sunsetObj, false));
+                sunsetEntryVacancy = false;
             }
     
             const container = document.createElement('div');
@@ -145,6 +158,42 @@ const SectionHours = function() {
         if (forecastCounter < 24) {
             generate24HourForecast(data, dataList, currentHourObj, ++day, forecastCounter);
         }
+    }
+
+    function sunriseSunsetDOM(timeObj, isSunrise=false) {
+        let nameValue = "Sunset";
+        let meridiem = "PM";
+        let iconClass = "hour-sunset";
+        if (isSunrise) {
+            nameValue = "Sunrise";
+            meridiem = "AM";
+            iconClass = "hour-sunrise";
+        }
+       
+        const container = document.createElement('div');
+        container.className = "hour-data";
+
+        const time = document.createElement('div');
+        time.className = "hour-time";
+        const hourTime = document.createElement('div');
+        hourTime.textContent = `${timeObj.hours12F}:${timeObj.minutes}`;
+        time.appendChild(hourTime);
+        const suffix = document.createElement('div');
+        suffix.textContent = meridiem;
+        time.appendChild(suffix);
+        container.appendChild(time);
+
+        const icon = document.createElement('div');
+        icon.classList.add("hour-icon");
+        icon.classList.add(iconClass);
+        container.appendChild(icon);
+
+        const name = document.createElement('div');
+        name.style.fontSize = "1rem";
+        name.textContent = nameValue;
+        container.appendChild(name);
+
+        return container;
     }
 
     return { generate };
