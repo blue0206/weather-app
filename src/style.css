@@ -574,7 +574,8 @@ input[type="radio"]:checked {
     mask-image: url("./assets/icons/clear-day.svg");
 }
 .day-icon.clear-night, .hour-icon.clear-night {
-    background-image: url("./assets/icons/clear-night.svg");
+    background-color: hsl(0, 0%, 100%);
+    mask-image: url("./assets/icons/clear-night.svg");
 }
 .cloudy {
     background-image: url("./assets/icons/cloudy.svg");
