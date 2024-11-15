@@ -231,6 +231,9 @@ input[type="radio"]:checked {
     border: 1px solid black;
     border-radius: 11px;
     padding: 13px 16px;
+
+    background-color: hsla(212, 41%, 26%, 0.503);
+    backdrop-filter: blur(8px);
 }
 
 /* Hourly Forecast Section */
