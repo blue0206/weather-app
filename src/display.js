@@ -615,7 +615,7 @@ const SectionMoon = function() {
         // Horizontal line.
         const hLine = document.createElement('div');
         hLine.className = "h-line";
-        container.appendChild(moonrise);
+        container.appendChild(hLine);
         // Moonset
         const moonset = document.createElement('div');
         const moonsetTitle = document.createElement('div');
