@@ -1,6 +1,7 @@
 function timeFormat(time) {
-    const hoursArr = [time.split('')[0], time.split('')[1]];
-    const minutesArr = [time.split('')[3], time.split('')[4]];
+    const timeArr = time.split('');
+    const hoursArr = [timeArr[0], timeArr[1]];
+    const minutesArr = [timeArr[3], timeArr[4]];
     let hours = hoursArr.join('');
     let minutes = minutesArr.join('');
     let hours12F = "";
