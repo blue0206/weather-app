@@ -1,5 +1,26 @@
+import { timeFormat } from "./utility";
+
 function setBackground(data) {
-    night();
+    const condition = data.currentConditions.icon;
+    const timeObj = timeFormat(data.currentConditions.datetime);
+    const sunriseObj = timeFormat(data.currentConditions.sunrise);
+    const sunsetObj = timeFormat(data.currentConditions.sunset);
+
+    if (condition == "hail" || condition.split('').includes("rain") || condition.split('').includes("showers") || condition == "sleet" || condition == "thunder") {
+        rain();
+    } else if (timeObj.hours == sunriseObj.hours) {
+        sunrise();
+    } else if (timeObj.hours == sunsetObj.hours) {
+        sunset();
+    } else if ((timeObj.hours < sunsetObj.hours && timeObj.hours > sunriseObj.hours) && condition.split('').includes("cloud")) {
+        cloudyDay();
+    } else if ((timeObj.hours < sunriseObj.hours || timeObj.hours > sunsetObj.hours) && condition.split('').includes("cloud")) {
+        cloudyNight();
+    } else if (timeObj.hours < sunsetObj.hours && timeObj.hours > sunriseObj.hours) {
+        day();
+    } else {
+        night();
+    }
 }
 
 function night() {
