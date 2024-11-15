@@ -1,3 +1,4 @@
+import { setBackground } from "./background";
 import { populateDisplay } from "./display";
 
 const searchResults = {
@@ -19,6 +20,9 @@ async function fetchAndDisplay(location) {
     searchResults.metricData = metricData;
     // Display fetched data in default imperial units.
     populateDisplay(imperialData);
+    // Setup background according to current weather conditions
+    // that have been fetched.
+    setBackground(imperialData);
 }
 
 function createURL(location) {
