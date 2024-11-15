@@ -71,6 +71,46 @@ main {
     grid-template-rows: auto 1fr;
 }
 
+/* Search Style */
+header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    padding-top: 25px;
+    padding-left: 25px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+
+    background-color: hsl(0, 3%, 14%);
+    color: white;
+    border-radius: 5px;
+}
+
+#location {
+    outline: none;
+    border: none;
+    background-color: inherit;
+    color: inherit;
+    padding-inline: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+form:has(>#location:focus) {
+    outline: 3.5px solid hsl(210, 70%, 50%);
+}
+
+#location-search {
+    background-color: rgb(187, 187, 187);
+    mask-image: url("./assets/icons/search.svg");
+    height: 1.5em;
+    aspect-ratio: 1 / 1;
+    
+    padding: 0;
+}
+
 /* Header Style */
 .header {
     display: grid;
