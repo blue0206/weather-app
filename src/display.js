@@ -240,7 +240,12 @@ const SectionDays = function() {
             // Weather icon for the day.
             const icon = document.createElement("div");
             icon.classList.add("day-icon");
-            icon.classList.add(day.icon);
+            if (day === data.days[0]) {
+                icon.classList.add(data.currentConditions.icon)
+            }
+            else {
+                icon.classList.add(day.icon);
+            }
             container.appendChild(icon);
 
             // Temperatures for the day.
