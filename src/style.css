@@ -378,7 +378,8 @@ input[type="radio"]:checked {
 }
 
 .visibility > div > div:last-child,
-.pressure > div > div:last-child {
+.pressure > div > div:last-child,
+.precipitation > div > div:last-child {
     font-size: 2rem;
 }
 
