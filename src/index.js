@@ -10,6 +10,8 @@ const FormControl = function() {
         if (location.value != "") {
             event.preventDefault();
             fetchAndDisplay(location.value);
+            // Clear input.
+            location.value = "";
         }
     });
 }();
