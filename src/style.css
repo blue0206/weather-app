@@ -620,6 +620,29 @@ input[type="radio"]:checked {
     margin-block: 8px;
 }
 
+/* Scrollbar Style */
+@supports selector(::-webkit-scrollbar) {
+    .daily-data-container::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .hourly-data-container::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .hourly-data-container::-webkit-scrollbar-track,
+    .daily-data-container::-webkit-scrollbar-track {
+        background-color: hsla(212, 41%, 26%, 0.503);
+        border-radius: 100vh;
+    }
+
+    .hourly-data-container::-webkit-scrollbar-thumb,
+    .daily-data-container::-webkit-scrollbar-thumb {
+        background-color: hsl(212, 41%, 26%);
+        border-radius: 100vh;
+    }
+}
+
 /* Icons */
 .day-icon, .hour-icon {
     height: 1.5em;
