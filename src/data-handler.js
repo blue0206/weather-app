@@ -55,7 +55,9 @@ async function getData(url) {
         ErrorHandler.throwError(`${response.status}: Not Found`);
         throw new Error(`${response.status}: Not Found.`);
       } else if (response.status == 429) {
-        ErrorHandler.throwError("You have exceeded the maximum allowed searches per day.");
+        ErrorHandler.throwError(
+          "You have exceeded the maximum allowed searches per day.",
+        );
         throw new Error(`${response.status}: Rate limit exceeded.`);
       } else if (response.status == 500) {
         ErrorHandler.throwError(
@@ -69,20 +71,20 @@ async function getData(url) {
   }
 }
 
-const ErrorHandler = function() {
-    const errorModal = document.querySelector(".error-modal");
-    const messageNode = document.querySelector(".message");
-    const closeBtn = document.querySelector('.error-close');
-    closeBtn.addEventListener('click', () => {
-        errorModal.close();
-    });
+const ErrorHandler = (function () {
+  const errorModal = document.querySelector(".error-modal");
+  const messageNode = document.querySelector(".message");
+  const closeBtn = document.querySelector(".error-close");
+  closeBtn.addEventListener("click", () => {
+    errorModal.close();
+  });
 
-    function throwError(message) {
-        messageNode.textContent = message;
-        errorModal.showModal();
-    }
+  function throwError(message) {
+    messageNode.textContent = message;
+    errorModal.showModal();
+  }
 
-    return { throwError };
-}();
+  return { throwError };
+})();
 
 export { searchResults, fetchAndDisplay };
