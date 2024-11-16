@@ -65,7 +65,8 @@ body {
     display: grid;
     grid-template-rows: auto 1fr 125px;
 
-    color: white;
+    color: hsl(0, 0%, 100%);
+    color: color(display-p3 1 1 1);
     background-size: contain;
 }
 /* Background Images */
@@ -151,7 +152,8 @@ form:has(>#location:focus) {
 /* Disable blur in backgrounds it is not required */
 .bg-night .header,
 .bg-cloudy-night .header,
-.bg-rain .header {
+.bg-rain .header,
+.bg-day .header {
     backdrop-filter: blur(0);
 }
 
@@ -294,6 +296,7 @@ input[type="radio"]:checked {
 
 .hour-sunrise, .hour-sunset {
     background-color: hsl(47, 100%, 50%);
+    background-color: color(display-p3 1 0.78 0);
     mask-size: contain;
 }
 
@@ -382,7 +385,9 @@ input[type="radio"]:checked {
     aspect-ratio: 1 / 0.65;
     border-radius: 11px;
     background-color: hsl(0, 0%, 100%);
+    background-color: color(display-p3 1 1 1);
     border: 2px solid hsl(0, 0%, 0%);
+    border-color: color(display-p3 0 0 0);
 }
 
 /* Feels-Like, Visibility, Precipitation & Pressure Sections */
@@ -614,10 +619,12 @@ input[type="radio"]:checked {
 
 .day-icon.clear-day, .hour-icon.clear-day {
     background-color: hsl(51, 100%, 50%);
+    background-color: color(display-p3 1 0.85 0);
     mask-image: url("./assets/icons/clear-day.svg");
 }
 .day-icon.clear-night, .hour-icon.clear-night {
     background-color: hsl(0, 0%, 100%);
+    background-color: color(display-p3 1 1 1);
     mask-image: url("./assets/icons/clear-night.svg");
 }
 .cloudy {
@@ -686,7 +693,8 @@ footer {
     display: grid;
     place-content: center;
     background-color: hsla(0, 0%, 0%, 0.926);
-    color: hsl(304, 100%, 90%);
+    color: rgb(255, 204, 252);
+    color: color(display-p3 1 0.8 1);
     gap: 16px;
 
     margin-top: 16px;
