@@ -700,8 +700,8 @@ const SectionMoon = function() {
 function generateSectionHeading(title, source) {
     const headingContainer = document.createElement('div');
     headingContainer.className = "data-heading";
-    const icon = new Image();
-    icon.src = source;
+    const icon = document.createElement('div');
+    icon.style.maskImage = `url("${source}")`;
     headingContainer.appendChild(icon);
     const heading = document.createElement('div');
     heading.textContent = title;
