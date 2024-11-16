@@ -58,7 +58,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 /* CSS Variables */
 :root {
-    --data-heading-color: hsl(211, 84%, 88%);
+    --color-theme-one: hsl(211, 84%, 88%);
 }
 
 /* Top Level*/
@@ -243,7 +243,7 @@ input[type="radio"]:checked {
 }
 
 .h-line {
-    background-color: var(--data-heading-color);
+    background-color: var(--color-theme-one);
 }
 
 /* Hourly Forecast Section */
@@ -325,11 +325,11 @@ input[type="radio"]:checked {
     font-size: 0.65rem;
     font-weight: 800;
     letter-spacing: 1.25px;
-    color: var(--data-heading-color);
+    color: var(--color-theme-one);
 }
 
 .data-heading > div:first-child {
-    background-color: var(--data-heading-color);
+    background-color: var(--color-theme-one);
     mask-size: contain;
     mask-position: center;
     height: 1.5em;
@@ -384,7 +384,7 @@ input[type="radio"]:checked {
 }
 
 .temp-container > div:first-child {
-    color: var(--data-heading-color);
+    color: var(--color-theme-one);
 }
 
 /* Linear Gradients and Marker Setup */
