@@ -235,12 +235,15 @@ input[type="radio"]:checked {
 }
 
 .data-tiles > * {
-    border: 1px solid black;
     border-radius: 11px;
     padding: 13px 16px;
 
     background-color: hsla(212, 41%, 26%, 0.503);
     backdrop-filter: blur(8px);
+}
+
+.h-line {
+    background-color: var(--data-heading-color);
 }
 
 /* Hourly Forecast Section */
@@ -359,8 +362,7 @@ input[type="radio"]:checked {
 
 .daily-data-container > .h-line {
     width: 100%;
-    height: 1px;
-    background-color: rgb(196, 196, 196);
+    height: 0.5px;
 }
 
 .day-data {
@@ -483,8 +485,7 @@ input[type="radio"]:checked {
 
 .winds .h-line {
     height: 100%;
-    width: 1px;
-    background-color: black;
+    width: 0.5px;
 }
 
 /* UV Index Section */
@@ -614,9 +615,8 @@ input[type="radio"]:checked {
 }
 
 .moon .h-line {
-    height: 1px;
+    height: 0.5px;
     width: 100%;
-    background-color: black;
     margin-block: 8px;
 }
 
