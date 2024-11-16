@@ -487,6 +487,11 @@ input[type="radio"]:checked {
     font-weight: 800;
 }
 
+.wind-speed > div:last-child > div:first-child,
+.wind-gust > div:last-child > div:first-child {
+    color: var(--color-theme-one);
+}
+
 .winds .h-line {
     height: 100%;
     width: 0.5px;
@@ -610,7 +615,9 @@ input[type="radio"]:checked {
     display: grid;
     grid-auto-flow: column;
     align-items: baseline;
-    gap: 2px
+    gap: 2px;
+
+    color: var(--color-theme-one);
 }
 
 .moonrise + div > div:last-child,
