@@ -46,17 +46,19 @@ async function getData(url) {
       return response.json();
     } else {
       if (response.status == 400) {
-        console.log("Location does not exist!");
+        ErrorHandler.throwError("Location does not exist!");
         throw new Error(`${response.status}: Invalid parameter(s).`);
       } else if (response.status == 401) {
-        console.log("Invalid API key.");
+        ErrorHandler.throwError("Invalid API key.");
         throw new Error(`${response.status}: Invalid API key.`);
       } else if (response.status == 404) {
+        ErrorHandler.throwError(`${response.status}: Not Found`);
         throw new Error(`${response.status}: Not Found.`);
       } else if (response.status == 429) {
+        ErrorHandler.throwError("You have exceeded the maximum allowed searches per day.");
         throw new Error(`${response.status}: Rate limit exceeded.`);
       } else if (response.status == 500) {
-        console.log(
+        ErrorHandler.throwError(
           "The server is not available at the moment. Please try later.",
         );
         throw new Error(`${response.status}: Internal server error.`);
@@ -66,5 +68,21 @@ async function getData(url) {
     console.error(error);
   }
 }
+
+const ErrorHandler = function() {
+    const errorModal = document.querySelector(".error-modal");
+    const messageNode = document.querySelector(".message");
+    const closeBtn = document.querySelector('.error-close');
+    closeBtn.addEventListener('click', () => {
+        errorModal.close();
+    });
+
+    function throwError(message) {
+        messageNode.textContent = message;
+        errorModal.showModal();
+    }
+
+    return { throwError };
+}();
 
 export { searchResults, fetchAndDisplay };
