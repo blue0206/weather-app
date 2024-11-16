@@ -248,6 +248,7 @@ input[type="radio"]:checked {
     grid-area: hours;
 
     padding-bottom: 0;
+    display: grid;
 }
 
 .hours > div {
@@ -259,6 +260,7 @@ input[type="radio"]:checked {
 .hourly-data-container {
     display: flex;
     gap: 25px;
+    padding-bottom: 16px;
 
     overflow-x: auto;
 }
