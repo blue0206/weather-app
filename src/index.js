@@ -21,7 +21,7 @@ const FormControl = function () {
 const DisplayControl = function () {
   // Window load event listener.
   window.addEventListener("load", () => {
-    fetchAndDisplay("london");
+    fetchAndDisplay("new delhi");
   });
 
   // Unit switch event listeners.
