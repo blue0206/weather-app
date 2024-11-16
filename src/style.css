@@ -383,6 +383,10 @@ input[type="radio"]:checked {
     gap: 8px;
 }
 
+.temp-container > div:first-child {
+    color: var(--data-heading-color);
+}
+
 /* Linear Gradients and Marker Setup */
 .temp-gradient, .uv-gradient {
     height: 5px;
