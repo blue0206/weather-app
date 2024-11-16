@@ -23,6 +23,21 @@ function setBackground(data) {
     }
 }
 
+function day() {
+    // Credits
+    const creditName = document.querySelector('.credit-name');
+    const creditSource = document.querySelector('.credit-source');
+    creditName.href =
+        "https://pixabay.com/users/jplenio-7645255/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3588618";
+    creditName.textContent = "Joe";
+    creditSource.href =
+        "https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3588618";
+    creditSource.textContent = "Pixabay";
+
+    // Set class
+    document.body.className = "bg-day";
+}
+
 function night() {
     // Credits
     const creditName = document.querySelector('.credit-name');
@@ -81,20 +96,6 @@ function rain() {
 
     // Set class
     document.body.className = "bg-rain";       
-}
-
-function day() {
-    // Credits
-    const creditName = document.querySelector('.credit-name');
-    const creditSource = document.querySelector('.credit-source');
-    creditName.href =
-        "https://pixabay.com/users/geralt-9301/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7161722";
-    creditName.textContent = "Gerd Altmann";
-    creditSource.href =
-        "https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7161722";
-    creditSource.textContent = "Pixabay";
-    // Set class
-    document.body.className = "bg-day";
 }
 
 function cloudyDay() {
