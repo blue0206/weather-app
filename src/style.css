@@ -715,7 +715,8 @@ input[type="radio"]:checked {
   background-image: url("./assets/icons/cloudy.svg");
 }
 .fog {
-  background-image: url("./assets/icons/fog.svg");
+  background-color: ghostwhite;
+  mask-image: url("./assets/icons/fog.svg");
 }
 .hail {
   background-image: url("./assets/icons/hail.svg");
