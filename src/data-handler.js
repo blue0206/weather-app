@@ -1,3 +1,4 @@
+import { LoadingComponent } from "./loading-component";
 import { setBackground } from "./background";
 import { populateDisplay } from "./display";
 
@@ -7,6 +8,8 @@ const searchResults = {
 };
 
 async function fetchAndDisplay(location) {
+  // Show loading.
+  LoadingComponent.show();
   // Create URL.
   let url = createURL(location);
   // Fetch data in imperial units.
