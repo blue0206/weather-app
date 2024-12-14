@@ -173,6 +173,47 @@ form:has(> #location:focus) {
   padding: 0;
 }
 
+/* Loading Component */
+dialog:has( #loading) {
+  background: transparent;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+dialog:has( #loading)::backdrop {
+  backdrop-filter: blur(16px);
+}
+
+dialog > div:has(> #loading) {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 16px;
+  padding: 5px;
+  padding-bottom: 0;
+  justify-content: center;
+}
+
+dialog #loading + div {
+  font-weight: 800;
+  justify-self: center;
+  margin-left: 8px;
+}
+
+#loading {
+  border: 0.35em dotted hsl(0, 0%, 86%);
+  border-radius: 50%;
+  width: 4.5em;
+  height: 4.5em;
+  animation: spin 3.5s linear infinite;
+  justify-self: center;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 /* Header Style */
 .header {
   display: grid;
