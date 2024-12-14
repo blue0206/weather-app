@@ -1,3 +1,4 @@
+import { LoadingComponent } from "./loading-component";
 import { format } from "date-fns";
 import { timeFormat } from "./utility";
 import { LinearGradient } from "./utility";
@@ -22,6 +23,8 @@ import MoonWaxingC from "./assets/icons/moon-waxing-crescent.svg";
 import MoonWaxingG from "./assets/icons/moon-waxing-gibbous.svg";
 
 function populateDisplay(data) {
+  // Hide Loading.
+  LoadingComponent.hide();
   // Update the header display.
   SectionHeader.generate(data);
   // Update display for hourly weather data.
